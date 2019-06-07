@@ -306,7 +306,7 @@ module electronicsTrayBody(){
 
 }
 
-module 5(){
+module electronicsTray(){
     difference(){
         electronicsTrayBody();
         tolerance() placeRelay() relayBody();
@@ -314,17 +314,46 @@ module 5(){
     }
 }
 
+module placeElectronicsTray(){
+    translate([0,3.5,28]) children();
+}
+
+module completeAssembly(){
+    placeElectronicsTray() electronicsTray();
+    placeBananaPlugs() bananaPlug();
+    placeBms() bms();
+    placeHighPowerReg() highPowerReg();
+    powerHousing();
+    placedPanelRegulators();
+    placedSwitches();
+    placedBananaPlugs();
+    placeElectronicsTray() placeSmpsupcbOnElectronicsTray() smpsupcb();
+}
+
+module placeSmpsupcbOnElectronicsTray(){
+    translate([35,1*0,6]) children();
+}
+
+module smpsupcb(){
+    l = 90;
+    w = 70;
+    cul = 30;
+    cuw = 45;
+    difference(){
+        cube([l, w, 2]);
+        translate([0,w-cuw,0]) cube([cul, cuw, 2]);
+    }
+}
+
+completeAssembly();
+/*
+placeElectronicsTray() electronicsTray();
+placeElectronicsTray() placeSmpsupcbOnElectronicsTray() smpsupcb();
+powerHousing();*/
 //relayBracket();
 //relay();
 //relayHoles(3/2,10);
 //placeRelay() relay();
-electronicsTray();
-
-
-//bananaPlug();
-//placeBms() bms();
-
-//placeHighPowerReg() highPowerReg();
 
 //rotate([0,90,0]) powerHousing();
 
@@ -342,8 +371,5 @@ intersection(){
 //centerCylinder(2.4, 10);
 
 
-//placedPanelRegulators();
-//placedSwitches();
-//placedBananaPlugs();
 //highPowerReg();
 //boxHull();
