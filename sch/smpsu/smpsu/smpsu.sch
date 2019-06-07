@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:smpsu-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -16,158 +17,975 @@ $EndDescr
 $Comp
 L Regulator_Switching:LM2596S-3.3 U1
 U 1 1 5CF7F6C0
-P 2600 3900
-F 0 "U1" H 2600 4267 50  0000 C CNN
-F 1 "LM2596S-3.3" H 2600 4176 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:TO-263-5_TabPin3" H 2650 3650 50  0001 L CIN
-F 3 "http://www.ti.com/lit/ds/symlink/lm2596.pdf" H 2600 3900 50  0001 C CNN
-	1    2600 3900
+P 2600 6300
+F 0 "U1" H 2600 6667 50  0000 C CNN
+F 1 "LM2596S-3.3" H 2600 6576 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-263-5_TabPin3" H 2650 6050 50  0001 L CIN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2596.pdf" H 2600 6300 50  0001 C CNN
+	1    2600 6300
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0101
 U 1 1 5CF7FC96
-P 2600 4550
-F 0 "#PWR0101" H 2600 4300 50  0001 C CNN
-F 1 "GND" H 2605 4377 50  0000 C CNN
-F 2 "" H 2600 4550 50  0001 C CNN
-F 3 "" H 2600 4550 50  0001 C CNN
-	1    2600 4550
+P 2600 6950
+F 0 "#PWR0101" H 2600 6700 50  0001 C CNN
+F 1 "GND" H 2605 6777 50  0000 C CNN
+F 2 "" H 2600 6950 50  0001 C CNN
+F 3 "" H 2600 6950 50  0001 C CNN
+	1    2600 6950
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:R R1
 U 1 1 5CF7FCD0
-P 2000 4150
-F 0 "R1" H 2070 4196 50  0000 L CNN
-F 1 "R" H 2070 4105 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" V 1930 4150 50  0001 C CNN
-F 3 "~" H 2000 4150 50  0001 C CNN
-	1    2000 4150
+P 2000 6550
+F 0 "R1" H 2070 6596 50  0000 L CNN
+F 1 "R" H 2070 6505 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 1930 6550 50  0001 C CNN
+F 3 "~" H 2000 6550 50  0001 C CNN
+	1    2000 6550
 	1    0    0    -1  
-$EndComp
-$Comp
-L Device:D_Schottky D1
-U 1 1 5CF7FD79
-P 3450 4150
-F 0 "D1" V 3404 4229 50  0000 L CNN
-F 1 "D_Schottky" V 3495 4229 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-2_Vertical" H 3450 4150 50  0001 C CNN
-F 3 "~" H 3450 4150 50  0001 C CNN
-	1    3450 4150
-	0    1    1    0   
 $EndComp
 $Comp
 L Device:L L1
 U 1 1 5CF7FE01
-P 4150 4000
-F 0 "L1" V 3972 4000 50  0000 C CNN
-F 1 "L" V 4063 4000 50  0000 C CNN
-F 2 "Choke_Toroid_ThroughHole:Transformer_Toroid_horizontal_Diameter18mm" H 4150 4000 50  0001 C CNN
-F 3 "~" H 4150 4000 50  0001 C CNN
-	1    4150 4000
+P 4150 6400
+F 0 "L1" V 3972 6400 50  0000 C CNN
+F 1 "L" V 4063 6400 50  0000 C CNN
+F 2 "footprints_smpsu:Choke_Toroid_12x16mm_Vertical" H 4150 6400 50  0001 C CNN
+F 3 "~" H 4150 6400 50  0001 C CNN
+	1    4150 6400
 	0    1    1    0   
 $EndComp
 $Comp
 L Device:C C2
 U 1 1 5CF7FE5D
-P 1700 3950
-F 0 "C2" H 1815 3996 50  0000 L CNN
-F 1 "C" H 1815 3905 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 1738 3800 50  0001 C CNN
-F 3 "~" H 1700 3950 50  0001 C CNN
-	1    1700 3950
+P 1700 6350
+F 0 "C2" H 1815 6396 50  0000 L CNN
+F 1 "C" H 1815 6305 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 1738 6200 50  0001 C CNN
+F 3 "~" H 1700 6350 50  0001 C CNN
+	1    1700 6350
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C3
 U 1 1 5CF7FEBD
-P 4450 4150
-F 0 "C3" H 4565 4196 50  0000 L CNN
-F 1 "C" H 4565 4105 50  0000 L CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 4488 4000 50  0001 C CNN
-F 3 "~" H 4450 4150 50  0001 C CNN
-	1    4450 4150
+P 4450 6550
+F 0 "C3" H 4565 6596 50  0000 L CNN
+F 1 "C" H 4565 6505 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4488 6400 50  0001 C CNN
+F 3 "~" H 4450 6550 50  0001 C CNN
+	1    4450 6550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:CP C1
 U 1 1 5CF7FF7B
-P 1350 3950
-F 0 "C1" H 1468 3996 50  0000 L CNN
-F 1 "CP" H 1468 3905 50  0000 L CNN
-F 2 "" H 1388 3800 50  0001 C CNN
-F 3 "~" H 1350 3950 50  0001 C CNN
-	1    1350 3950
+P 650 6350
+F 0 "C1" H 768 6396 50  0000 L CNN
+F 1 "CP" H 768 6305 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:CP_Radial_D18.0mm_P7.50mm" H 688 6200 50  0001 C CNN
+F 3 "~" H 650 6350 50  0001 C CNN
+	1    650  6350
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:CP C4
 U 1 1 5CF7FFB7
-P 4800 4150
-F 0 "C4" H 4918 4196 50  0000 L CNN
-F 1 "CP" H 4918 4105 50  0000 L CNN
-F 2 "" H 4838 4000 50  0001 C CNN
-F 3 "~" H 4800 4150 50  0001 C CNN
-	1    4800 4150
+P 4800 6550
+F 0 "C4" H 4918 6596 50  0000 L CNN
+F 1 "CP" H 4918 6505 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:CP_Radial_D10.0mm_P3.50mm" H 4838 6400 50  0001 C CNN
+F 3 "~" H 4800 6550 50  0001 C CNN
+	1    4800 6550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2000 4300 2600 4300
+	2000 6700 2600 6700
 Wire Wire Line
-	2600 4200 2600 4300
-Connection ~ 2600 4300
+	2600 6600 2600 6700
+Connection ~ 2600 6700
 Wire Wire Line
-	2600 4300 3450 4300
+	2600 6950 2600 6700
 Wire Wire Line
-	2600 4550 2600 4300
+	2100 6400 2000 6400
 Wire Wire Line
-	2100 4000 2000 4000
+	4450 6700 4800 6700
+Connection ~ 4450 6700
 Wire Wire Line
-	3100 4000 3450 4000
+	4800 6400 4450 6400
 Wire Wire Line
-	4450 4300 4800 4300
-Connection ~ 4450 4300
+	4300 6400 4450 6400
+Connection ~ 4450 6400
 Wire Wire Line
-	4800 4000 4450 4000
+	4450 6400 4450 6200
 Wire Wire Line
-	4300 4000 4450 4000
-Connection ~ 4450 4000
+	4450 6200 3950 6200
 Wire Wire Line
-	4000 4000 3450 4000
-Connection ~ 3450 4000
-Wire Wire Line
-	3450 4300 4450 4300
-Connection ~ 3450 4300
-Wire Wire Line
-	4450 4000 4450 3800
-Wire Wire Line
-	4450 3800 3100 3800
-Wire Wire Line
-	2100 3800 1700 3800
-Wire Wire Line
-	1700 3800 1350 3800
-Connection ~ 1700 3800
+	2100 6200 1950 6200
 $Comp
 L power:GND #PWR0102
 U 1 1 5CF80607
-P 1550 4100
-F 0 "#PWR0102" H 1550 3850 50  0001 C CNN
-F 1 "GND" H 1555 3927 50  0000 C CNN
-F 2 "" H 1550 4100 50  0001 C CNN
-F 3 "" H 1550 4100 50  0001 C CNN
-	1    1550 4100
+P 1550 6500
+F 0 "#PWR0102" H 1550 6250 50  0001 C CNN
+F 1 "GND" H 1555 6327 50  0000 C CNN
+F 2 "" H 1550 6500 50  0001 C CNN
+F 3 "" H 1550 6500 50  0001 C CNN
+	1    1550 6500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1700 4100 1550 4100
+	1700 6500 1550 6500
 Wire Wire Line
-	1550 4100 1350 4100
-Connection ~ 1550 4100
+	1700 6500 1700 6700
 Wire Wire Line
-	1700 4100 1700 4300
+	1700 6700 2000 6700
+Connection ~ 1700 6500
+Connection ~ 2000 6700
 Wire Wire Line
-	1700 4300 2000 4300
-Connection ~ 1700 4100
-Connection ~ 2000 4300
+	650  6500 1550 6500
+Connection ~ 1550 6500
+$Comp
+L Regulator_Switching:LM2596S-3.3 U4
+U 1 1 5CF9956D
+P 2600 4750
+F 0 "U4" H 2600 5117 50  0000 C CNN
+F 1 "LM2596S-3.3" H 2600 5026 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-263-5_TabPin3" H 2650 4500 50  0001 L CIN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2596.pdf" H 2600 4750 50  0001 C CNN
+	1    2600 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 5CF99573
+P 2600 5400
+F 0 "#PWR0104" H 2600 5150 50  0001 C CNN
+F 1 "GND" H 2605 5227 50  0000 C CNN
+F 2 "" H 2600 5400 50  0001 C CNN
+F 3 "" H 2600 5400 50  0001 C CNN
+	1    2600 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R12
+U 1 1 5CF99579
+P 2000 5000
+F 0 "R12" H 2070 5046 50  0000 L CNN
+F 1 "R" H 2070 4955 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 1930 5000 50  0001 C CNN
+F 3 "~" H 2000 5000 50  0001 C CNN
+	1    2000 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:L L4
+U 1 1 5CF99585
+P 4150 4850
+F 0 "L4" V 3972 4850 50  0000 C CNN
+F 1 "L" V 4063 4850 50  0000 C CNN
+F 2 "footprints_smpsu:Choke_Toroid_12x16mm_Vertical" H 4150 4850 50  0001 C CNN
+F 3 "~" H 4150 4850 50  0001 C CNN
+	1    4150 4850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C11
+U 1 1 5CF9958B
+P 1700 4800
+F 0 "C11" H 1815 4846 50  0000 L CNN
+F 1 "C" H 1815 4755 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 1738 4650 50  0001 C CNN
+F 3 "~" H 1700 4800 50  0001 C CNN
+	1    1700 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C12
+U 1 1 5CF99591
+P 4450 5000
+F 0 "C12" H 4565 5046 50  0000 L CNN
+F 1 "C" H 4565 4955 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4488 4850 50  0001 C CNN
+F 3 "~" H 4450 5000 50  0001 C CNN
+	1    4450 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C13
+U 1 1 5CF99597
+P 4800 5000
+F 0 "C13" H 4918 5046 50  0000 L CNN
+F 1 "CP" H 4918 4955 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:CP_Radial_D10.0mm_P3.50mm" H 4838 4850 50  0001 C CNN
+F 3 "~" H 4800 5000 50  0001 C CNN
+	1    4800 5000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 5150 2600 5150
+Wire Wire Line
+	2600 5050 2600 5150
+Connection ~ 2600 5150
+Wire Wire Line
+	2600 5400 2600 5150
+Wire Wire Line
+	2100 4850 2000 4850
+Wire Wire Line
+	4450 5150 4800 5150
+Connection ~ 4450 5150
+Wire Wire Line
+	4800 4850 4450 4850
+Wire Wire Line
+	4300 4850 4450 4850
+Connection ~ 4450 4850
+Wire Wire Line
+	4450 4850 4450 4650
+Wire Wire Line
+	4450 4650 3950 4650
+Wire Wire Line
+	2100 4650 1700 4650
+$Comp
+L power:GND #PWR0105
+U 1 1 5CF995B0
+P 1550 4950
+F 0 "#PWR0105" H 1550 4700 50  0001 C CNN
+F 1 "GND" H 1555 4777 50  0000 C CNN
+F 2 "" H 1550 4950 50  0001 C CNN
+F 3 "" H 1550 4950 50  0001 C CNN
+	1    1550 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 4950 1550 4950
+Wire Wire Line
+	1700 4950 1700 5150
+Wire Wire Line
+	1700 5150 2000 5150
+Connection ~ 1700 4950
+Connection ~ 2000 5150
+Wire Wire Line
+	650  4650 1700 4650
+Connection ~ 1700 4650
+Wire Wire Line
+	650  4950 1550 4950
+Connection ~ 1550 4950
+$Comp
+L Regulator_Switching:LM2596S-3.3 U3
+U 1 1 5CF9A594
+P 2600 3250
+F 0 "U3" H 2600 3617 50  0000 C CNN
+F 1 "LM2596S-3.3" H 2600 3526 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-263-5_TabPin3" H 2650 3000 50  0001 L CIN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2596.pdf" H 2600 3250 50  0001 C CNN
+	1    2600 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0107
+U 1 1 5CF9A59A
+P 2600 3900
+F 0 "#PWR0107" H 2600 3650 50  0001 C CNN
+F 1 "GND" H 2605 3727 50  0000 C CNN
+F 2 "" H 2600 3900 50  0001 C CNN
+F 3 "" H 2600 3900 50  0001 C CNN
+	1    2600 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 5CF9A5A0
+P 2000 3500
+F 0 "R9" H 2070 3546 50  0000 L CNN
+F 1 "R" H 2070 3455 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 1930 3500 50  0001 C CNN
+F 3 "~" H 2000 3500 50  0001 C CNN
+	1    2000 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:L L3
+U 1 1 5CF9A5AC
+P 4150 3350
+F 0 "L3" V 3972 3350 50  0000 C CNN
+F 1 "L" V 4063 3350 50  0000 C CNN
+F 2 "footprints_smpsu:Choke_Toroid_12x16mm_Vertical" H 4150 3350 50  0001 C CNN
+F 3 "~" H 4150 3350 50  0001 C CNN
+	1    4150 3350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C8
+U 1 1 5CF9A5B2
+P 1700 3300
+F 0 "C8" H 1815 3346 50  0000 L CNN
+F 1 "C" H 1815 3255 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 1738 3150 50  0001 C CNN
+F 3 "~" H 1700 3300 50  0001 C CNN
+	1    1700 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C9
+U 1 1 5CF9A5B8
+P 4450 3500
+F 0 "C9" H 4565 3546 50  0000 L CNN
+F 1 "C" H 4565 3455 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4488 3350 50  0001 C CNN
+F 3 "~" H 4450 3500 50  0001 C CNN
+	1    4450 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C10
+U 1 1 5CF9A5BE
+P 4800 3500
+F 0 "C10" H 4918 3546 50  0000 L CNN
+F 1 "CP" H 4918 3455 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:CP_Radial_D10.0mm_P3.50mm" H 4838 3350 50  0001 C CNN
+F 3 "~" H 4800 3500 50  0001 C CNN
+	1    4800 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 3650 2600 3650
+Wire Wire Line
+	2600 3550 2600 3650
+Connection ~ 2600 3650
+Wire Wire Line
+	2600 3900 2600 3650
+Wire Wire Line
+	2100 3350 2000 3350
+Wire Wire Line
+	4450 3650 4800 3650
+Connection ~ 4450 3650
+Wire Wire Line
+	4800 3350 4450 3350
+Wire Wire Line
+	4300 3350 4450 3350
+Connection ~ 4450 3350
+Wire Wire Line
+	4450 3350 4450 3150
+Wire Wire Line
+	4450 3150 3950 3150
+Wire Wire Line
+	2100 3150 1700 3150
+$Comp
+L power:GND #PWR0108
+U 1 1 5CF9A5D7
+P 1550 3450
+F 0 "#PWR0108" H 1550 3200 50  0001 C CNN
+F 1 "GND" H 1555 3277 50  0000 C CNN
+F 2 "" H 1550 3450 50  0001 C CNN
+F 3 "" H 1550 3450 50  0001 C CNN
+	1    1550 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 3450 1550 3450
+Wire Wire Line
+	1700 3450 1700 3650
+Wire Wire Line
+	1700 3650 2000 3650
+Connection ~ 1700 3450
+Connection ~ 2000 3650
+Wire Wire Line
+	650  3150 1700 3150
+Connection ~ 1700 3150
+Wire Wire Line
+	650  3450 1550 3450
+Connection ~ 1550 3450
+$Comp
+L Regulator_Switching:LM2596S-3.3 U2
+U 1 1 5CF9DFAC
+P 2600 1700
+F 0 "U2" H 2600 2067 50  0000 C CNN
+F 1 "LM2596S-3.3" H 2600 1976 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-263-5_TabPin3" H 2650 1450 50  0001 L CIN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2596.pdf" H 2600 1700 50  0001 C CNN
+	1    2600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 5CF9DFB2
+P 2600 2350
+F 0 "#PWR0110" H 2600 2100 50  0001 C CNN
+F 1 "GND" H 2605 2177 50  0000 C CNN
+F 2 "" H 2600 2350 50  0001 C CNN
+F 3 "" H 2600 2350 50  0001 C CNN
+	1    2600 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 5CF9DFB8
+P 2000 1950
+F 0 "R6" H 2070 1996 50  0000 L CNN
+F 1 "R" H 2070 1905 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 1930 1950 50  0001 C CNN
+F 3 "~" H 2000 1950 50  0001 C CNN
+	1    2000 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:L L2
+U 1 1 5CF9DFC4
+P 4150 1800
+F 0 "L2" V 3972 1800 50  0000 C CNN
+F 1 "L" V 4063 1800 50  0000 C CNN
+F 2 "footprints_smpsu:Choke_Toroid_12x16mm_Vertical" H 4150 1800 50  0001 C CNN
+F 3 "~" H 4150 1800 50  0001 C CNN
+	1    4150 1800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C5
+U 1 1 5CF9DFCA
+P 1700 1750
+F 0 "C5" H 1815 1796 50  0000 L CNN
+F 1 "C" H 1815 1705 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 1738 1600 50  0001 C CNN
+F 3 "~" H 1700 1750 50  0001 C CNN
+	1    1700 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C6
+U 1 1 5CF9DFD0
+P 4450 1950
+F 0 "C6" H 4565 1996 50  0000 L CNN
+F 1 "C" H 4565 1905 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 4488 1800 50  0001 C CNN
+F 3 "~" H 4450 1950 50  0001 C CNN
+	1    4450 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C7
+U 1 1 5CF9DFD6
+P 4800 1950
+F 0 "C7" H 4918 1996 50  0000 L CNN
+F 1 "CP" H 4918 1905 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:CP_Radial_D10.0mm_P3.50mm" H 4838 1800 50  0001 C CNN
+F 3 "~" H 4800 1950 50  0001 C CNN
+	1    4800 1950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 2100 2600 2100
+Wire Wire Line
+	2600 2000 2600 2100
+Connection ~ 2600 2100
+Wire Wire Line
+	2600 2350 2600 2100
+Wire Wire Line
+	2100 1800 2000 1800
+Wire Wire Line
+	4450 2100 4800 2100
+Connection ~ 4450 2100
+Wire Wire Line
+	4800 1800 4450 1800
+Wire Wire Line
+	4300 1800 4450 1800
+Connection ~ 4450 1800
+Wire Wire Line
+	4450 1800 4450 1600
+Wire Wire Line
+	4450 1600 3950 1600
+Wire Wire Line
+	2100 1600 1700 1600
+$Comp
+L power:GND #PWR0111
+U 1 1 5CF9DFEF
+P 1550 1900
+F 0 "#PWR0111" H 1550 1650 50  0001 C CNN
+F 1 "GND" H 1555 1727 50  0000 C CNN
+F 2 "" H 1550 1900 50  0001 C CNN
+F 3 "" H 1550 1900 50  0001 C CNN
+	1    1550 1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 1900 1550 1900
+Wire Wire Line
+	1700 1900 1700 2100
+Wire Wire Line
+	1700 2100 2000 2100
+Connection ~ 1700 1900
+Connection ~ 2000 2100
+$Comp
+L power:GND #PWR0112
+U 1 1 5CF9E009
+P 3550 1600
+F 0 "#PWR0112" H 3550 1350 50  0001 C CNN
+F 1 "GND" H 3555 1427 50  0000 C CNN
+F 2 "" H 3550 1600 50  0001 C CNN
+F 3 "" H 3550 1600 50  0001 C CNN
+	1    3550 1600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	650  1600 1700 1600
+Connection ~ 1700 1600
+Wire Wire Line
+	650  1900 1550 1900
+Connection ~ 1550 1900
+Text Label 700  6200 0    50   ~ 0
+Vin
+$Comp
+L Device:D_Schottky_KAK D3
+U 1 1 5CFA2ABB
+P 3250 5100
+F 0 "D3" V 3179 5240 50  0000 L CNN
+F 1 "D_Schottky_KAK" V 3270 5240 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 5100 50  0001 C CNN
+F 3 "~" H 3250 5100 50  0001 C CNN
+	1    3250 5100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3100 6400 3250 6400
+Wire Wire Line
+	2600 6700 3250 6700
+Wire Wire Line
+	3100 4850 3250 4850
+Wire Wire Line
+	2600 5150 3250 5150
+Wire Wire Line
+	3100 3350 3250 3350
+Wire Wire Line
+	2600 3650 3250 3650
+Wire Wire Line
+	3100 1800 3200 1800
+Wire Wire Line
+	2600 2100 3200 2100
+$Comp
+L Device:D_Schottky_KAK D4
+U 1 1 5CFA34A7
+P 3250 6650
+F 0 "D4" V 3179 6790 50  0000 L CNN
+F 1 "D_Schottky_KAK" V 3270 6790 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 6650 50  0001 C CNN
+F 3 "~" H 3250 6650 50  0001 C CNN
+	1    3250 6650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3350 6400 4000 6400
+Wire Wire Line
+	3350 4850 4000 4850
+$Comp
+L Device:D_Schottky_KAK D2
+U 1 1 5CFA3654
+P 3250 3600
+F 0 "D2" V 3179 3740 50  0000 L CNN
+F 1 "D_Schottky_KAK" V 3270 3740 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 3600 50  0001 C CNN
+F 3 "~" H 3250 3600 50  0001 C CNN
+	1    3250 3600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3350 3350 4000 3350
+$Comp
+L Device:D_Schottky_KAK D1
+U 1 1 5CFA36D4
+P 3200 2050
+F 0 "D1" V 3129 2190 50  0000 L CNN
+F 1 "D_Schottky_KAK" V 3220 2190 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3200 2050 50  0001 C CNN
+F 3 "~" H 3200 2050 50  0001 C CNN
+	1    3200 2050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3300 1800 4000 1800
+Wire Wire Line
+	3300 1800 3200 1800
+Connection ~ 3300 1800
+Connection ~ 3200 1800
+Wire Wire Line
+	3200 2250 3200 2100
+Connection ~ 3200 2100
+Wire Wire Line
+	3200 2100 4450 2100
+Wire Wire Line
+	3250 3350 3350 3350
+Connection ~ 3250 3350
+Connection ~ 3350 3350
+Wire Wire Line
+	3250 3800 3250 3650
+Connection ~ 3250 3650
+Wire Wire Line
+	3250 3650 4450 3650
+Wire Wire Line
+	3250 4850 3350 4850
+Connection ~ 3250 4850
+Connection ~ 3350 4850
+Wire Wire Line
+	3250 5300 3250 5150
+Connection ~ 3250 5150
+Wire Wire Line
+	3250 5150 4450 5150
+Wire Wire Line
+	3250 6400 3350 6400
+Connection ~ 3250 6400
+Connection ~ 3350 6400
+Wire Wire Line
+	3250 6850 3250 6700
+Connection ~ 3250 6700
+Wire Wire Line
+	3250 6700 4450 6700
+Wire Wire Line
+	5150 6500 5150 6400
+Wire Wire Line
+	5150 6400 4800 6400
+Connection ~ 4800 6400
+Wire Wire Line
+	5150 6600 5150 6700
+Wire Wire Line
+	5150 6700 4800 6700
+Connection ~ 4800 6700
+Wire Wire Line
+	5150 4950 5150 4850
+Wire Wire Line
+	5150 4850 4800 4850
+Wire Wire Line
+	5150 5050 5150 5150
+Wire Wire Line
+	5150 5150 4800 5150
+Connection ~ 4800 4850
+Connection ~ 4800 5150
+Wire Wire Line
+	5150 3450 5150 3350
+Wire Wire Line
+	5150 3350 4800 3350
+Wire Wire Line
+	5150 3550 5150 3650
+Wire Wire Line
+	5150 3650 4800 3650
+Wire Wire Line
+	5150 1900 5150 1800
+Wire Wire Line
+	5150 1800 4800 1800
+Wire Wire Line
+	5150 2000 5150 2100
+Wire Wire Line
+	5150 2100 4800 2100
+$Comp
+L Connector:Conn_01x01_Female J8
+U 1 1 5CFBE7E2
+P 5350 6600
+F 0 "J8" H 5377 6626 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 6535 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 6600 50  0001 C CNN
+F 3 "~" H 5350 6600 50  0001 C CNN
+	1    5350 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J7
+U 1 1 5CFBE862
+P 5350 6500
+F 0 "J7" H 5377 6526 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 6435 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 6500 50  0001 C CNN
+F 3 "~" H 5350 6500 50  0001 C CNN
+	1    5350 6500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J6
+U 1 1 5CFBE961
+P 5350 5050
+F 0 "J6" H 5377 5076 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 4985 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 5050 50  0001 C CNN
+F 3 "~" H 5350 5050 50  0001 C CNN
+	1    5350 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J5
+U 1 1 5CFBE968
+P 5350 4950
+F 0 "J5" H 5377 4976 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 4885 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 4950 50  0001 C CNN
+F 3 "~" H 5350 4950 50  0001 C CNN
+	1    5350 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J4
+U 1 1 5CFC2E4A
+P 5350 3550
+F 0 "J4" H 5377 3576 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 3485 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 3550 50  0001 C CNN
+F 3 "~" H 5350 3550 50  0001 C CNN
+	1    5350 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J3
+U 1 1 5CFC2E51
+P 5350 3450
+F 0 "J3" H 5377 3476 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 3385 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 3450 50  0001 C CNN
+F 3 "~" H 5350 3450 50  0001 C CNN
+	1    5350 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J2
+U 1 1 5CFC6AD0
+P 5350 2000
+F 0 "J2" H 5377 2026 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 1935 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 2000 50  0001 C CNN
+F 3 "~" H 5350 2000 50  0001 C CNN
+	1    5350 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J1
+U 1 1 5CFC6AD7
+P 5350 1900
+F 0 "J1" H 5377 1926 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 5377 1835 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 5350 1900 50  0001 C CNN
+F 3 "~" H 5350 1900 50  0001 C CNN
+	1    5350 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT RV1
+U 1 1 5CFCDF7A
+P 3800 1600
+F 0 "RV1" V 3686 1600 50  0000 C CNN
+F 1 "R_POT" V 3595 1600 50  0000 C CNN
+F 2 "Potentiometers:Potentiometer_Trimmer_Bourns_3214J" H 3800 1600 50  0001 C CNN
+F 3 "~" H 3800 1600 50  0001 C CNN
+	1    3800 1600
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3650 1600 3550 1600
+Wire Wire Line
+	3100 1600 3350 1600
+Wire Wire Line
+	3350 1600 3350 1450
+Wire Wire Line
+	3350 1450 3800 1450
+$Comp
+L power:GND #PWR0103
+U 1 1 5CFDF27C
+P 3550 3150
+F 0 "#PWR0103" H 3550 2900 50  0001 C CNN
+F 1 "GND" H 3555 2977 50  0000 C CNN
+F 2 "" H 3550 3150 50  0001 C CNN
+F 3 "" H 3550 3150 50  0001 C CNN
+	1    3550 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT RV2
+U 1 1 5CFDF282
+P 3800 3150
+F 0 "RV2" V 3686 3150 50  0000 C CNN
+F 1 "R_POT" V 3595 3150 50  0000 C CNN
+F 2 "Potentiometers:Potentiometer_Trimmer_Bourns_3214J" H 3800 3150 50  0001 C CNN
+F 3 "~" H 3800 3150 50  0001 C CNN
+	1    3800 3150
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3650 3150 3550 3150
+Wire Wire Line
+	3100 3150 3350 3150
+Wire Wire Line
+	3350 3150 3350 3000
+Wire Wire Line
+	3350 3000 3800 3000
+$Comp
+L power:GND #PWR0106
+U 1 1 5CFE3154
+P 3550 4650
+F 0 "#PWR0106" H 3550 4400 50  0001 C CNN
+F 1 "GND" H 3555 4477 50  0000 C CNN
+F 2 "" H 3550 4650 50  0001 C CNN
+F 3 "" H 3550 4650 50  0001 C CNN
+	1    3550 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT RV3
+U 1 1 5CFE315A
+P 3800 4650
+F 0 "RV3" V 3686 4650 50  0000 C CNN
+F 1 "R_POT" V 3595 4650 50  0000 C CNN
+F 2 "Potentiometers:Potentiometer_Trimmer_Bourns_3214J" H 3800 4650 50  0001 C CNN
+F 3 "~" H 3800 4650 50  0001 C CNN
+	1    3800 4650
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3650 4650 3550 4650
+Wire Wire Line
+	3100 4650 3350 4650
+Wire Wire Line
+	3350 4650 3350 4500
+Wire Wire Line
+	3350 4500 3800 4500
+$Comp
+L power:GND #PWR0109
+U 1 1 5CFE763E
+P 3550 6200
+F 0 "#PWR0109" H 3550 5950 50  0001 C CNN
+F 1 "GND" H 3555 6027 50  0000 C CNN
+F 2 "" H 3550 6200 50  0001 C CNN
+F 3 "" H 3550 6200 50  0001 C CNN
+	1    3550 6200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT RV4
+U 1 1 5CFE7644
+P 3800 6200
+F 0 "RV4" V 3686 6200 50  0000 C CNN
+F 1 "R_POT" V 3595 6200 50  0000 C CNN
+F 2 "Potentiometers:Potentiometer_Trimmer_Bourns_3214J" H 3800 6200 50  0001 C CNN
+F 3 "~" H 3800 6200 50  0001 C CNN
+	1    3800 6200
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	3650 6200 3550 6200
+Wire Wire Line
+	3100 6200 3350 6200
+Wire Wire Line
+	3350 6200 3350 6050
+Wire Wire Line
+	3350 6050 3800 6050
+$Comp
+L Connector:Conn_01x01_Female J16
+U 1 1 5CFFE72F
+P 1050 6200
+F 0 "J16" H 1077 6226 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 1077 6135 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 6200 50  0001 C CNN
+F 3 "~" H 1050 6200 50  0001 C CNN
+	1    1050 6200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	850  6200 650  6200
+$Comp
+L Connector:Conn_01x01_Female J15
+U 1 1 5D002C66
+P 1050 6050
+F 0 "J15" H 1077 6076 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 1077 5985 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 6050 50  0001 C CNN
+F 3 "~" H 1050 6050 50  0001 C CNN
+	1    1050 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J14
+U 1 1 5D002CD6
+P 1050 5900
+F 0 "J14" H 1077 5926 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 1077 5835 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 5900 50  0001 C CNN
+F 3 "~" H 1050 5900 50  0001 C CNN
+	1    1050 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J13
+U 1 1 5D002D42
+P 1050 5750
+F 0 "J13" H 1077 5776 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 1077 5685 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 5750 50  0001 C CNN
+F 3 "~" H 1050 5750 50  0001 C CNN
+	1    1050 5750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J12
+U 1 1 5D002DAE
+P 1050 5600
+F 0 "J12" H 1077 5626 50  0000 L CNN
+F 1 "Conn_01x01_Female" H 1077 5535 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 5600 50  0001 C CNN
+F 3 "~" H 1050 5600 50  0001 C CNN
+	1    1050 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	850  5600 850  5750
+Connection ~ 850  6200
+Connection ~ 850  5750
+Wire Wire Line
+	850  5750 850  5900
+Connection ~ 850  5900
+Wire Wire Line
+	850  5900 850  6050
+Connection ~ 850  6050
+Wire Wire Line
+	850  6050 850  6200
+$Comp
+L Connector:Conn_01x01_Female J11
+U 1 1 5D009A01
+P 650 4850
+F 0 "J11" V 497 4898 50  0000 L CNN
+F 1 "Conn_01x01_Female" V 588 4898 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 650 4850 50  0001 C CNN
+F 3 "~" H 650 4850 50  0001 C CNN
+	1    650  4850
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J17
+U 1 1 5D009D89
+P 1950 6400
+F 0 "J17" V 1797 6448 50  0000 L CNN
+F 1 "Conn_01x01_Female" V 1888 6448 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1950 6400 50  0001 C CNN
+F 3 "~" H 1950 6400 50  0001 C CNN
+	1    1950 6400
+	0    1    1    0   
+$EndComp
+Connection ~ 1950 6200
+Wire Wire Line
+	1950 6200 1700 6200
+$Comp
+L Connector:Conn_01x01_Female J10
+U 1 1 5D00AF57
+P 650 3350
+F 0 "J10" V 497 3398 50  0000 L CNN
+F 1 "Conn_01x01_Female" V 588 3398 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 650 3350 50  0001 C CNN
+F 3 "~" H 650 3350 50  0001 C CNN
+	1    650  3350
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:Conn_01x01_Female J9
+U 1 1 5D00BAE2
+P 650 1800
+F 0 "J9" V 497 1848 50  0000 L CNN
+F 1 "Conn_01x01_Female" V 588 1848 50  0000 L CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 650 1800 50  0001 C CNN
+F 3 "~" H 650 1800 50  0001 C CNN
+	1    650  1800
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
