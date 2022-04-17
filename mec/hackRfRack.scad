@@ -71,7 +71,7 @@ module flarps(ang){
 }
 
 module hackRack(){
-translate([25/2,0,0]) placeHackRfs() flarps(2);
+translate([25/2,0,0]) placeHackRfs() flarps(5);
     difference(){
         cube([125+2*s, (28)*3+4*s, 10]);
    
@@ -79,7 +79,16 @@ translate([25/2,0,0]) placeHackRfs() flarps(2);
 
     }
 }
-hackRack();
-placeHackRfs() hackRf();
+//hackRack();
+//placeHackRfs() hackRf();
 
+module slideLock(l){
+    d = 3;
+    difference(){
+        cube([31+2*d,9+d,l]);
+        translate([d+1,-80,l])rotate([0,90,0]) minkowski(){flarps(1.8);cylinder(0.6);}
+    }
+}
+
+slideLock(15);
 

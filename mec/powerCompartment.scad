@@ -345,7 +345,27 @@ module smpsupcb(){
     }
 }
 
+module fanHolePattern(l){
+    d = (76-4.5)/2;
+    r = sqrt(d*d+d*d);
+    cylinder(l, 77/2,77/2);
+    nObj(r,4,45)cylinder(l, 4.5/2,4.5/2);
+}
+
+module fan(){
+    difference(){
+        centerCube([80,80,25]);
+        fanHolePattern(25);
+    }
+}
+module placeFan(){
+    translate([lcell,3,7]) translate([0,40,40]) rotate([90,0,90]) children();
+}
+
+placeFan() fan();
+
 completeAssembly();
+//translate([200,-10,-10]) boxShellOpen(); //boxHull();
 /*
 placeElectronicsTray() electronicsTray();
 placeElectronicsTray() placeSmpsupcbOnElectronicsTray() smpsupcb();
