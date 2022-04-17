@@ -40,6 +40,27 @@ module sp6t(){
     }
 }
 
+module smaConnector(){
+    color([1,0,0])cylinder(8, 6.5/2, 6.5/2);
+    centerCube([16, 6, 3.5]);
+}
+
+module yigFilterHoles(){
+    quad(28.5/2) cylinder(10, 3/2, 3/2);
+}
+
+module yigFilter(holes=true){
+    difference(){
+    centerCube(36*[1,1,1]);
+        
+        if(holes) yigFilterHoles();
+    }
+    translate([18,-19.5/2,18])rotate([0,90,0])smaConnector();
+    translate([18,19.5/2,18])rotate([0,90,0])smaConnector();
+    translate([-18,-19.5/2,18])rotate([0,-90,0])smaConnector();
+    translate([-18,19.5/2,18])rotate([0,-90,0])smaConnector();
+    translate([-5,18,10])cube([16,10,16]);
+}
 
 
 module hexBody(r, h){
