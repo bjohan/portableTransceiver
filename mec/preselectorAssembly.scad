@@ -1,44 +1,8 @@
+use <util.scad>
+use <sp6t.scad>
+
 tol = 0.5;
-module centerCube(v){
-    translate([-v[0]/2,-v[1]/2,0]) cube(v);
-}
 
-module rectPlace(v){
-    translate([-v[0]/2,-v[1]/2,0]) children();
-    translate([-v[0]/2,v[1]/2,0]) children();
-    translate([v[0]/2,-v[1]/2,0]) children();
-    translate([v[0]/2,v[1]/2,0]) children();
-}
-
-
-module nObj(r, n, offs){
-    for(a=[1:n]) rotate([0,0, offs+a*360/n]) translate([r,0,0]) children();
-}
-
-module quad(d){
-    nObj(sqrt(2)*d, 4, 45) children();
-}
-
-
-module sp6tHolePattern(l=10){
-translate([0,0,42.5+5-l])quad(35/2) cylinder(l, 3/2, 3/2);
-}
-
-module sp6t(){
-    cylinder(42.5, 20, 20);
-    translate([0,0,-9])
-    cylinder(9, 11.1, 11.1);
-    translate([0,0,42.5]){
-        difference(){
-        centerCube([45, 45,3]);
-       translate([0,0,-42.5+5])sp6tHolePattern();
-        }
-        translate([0,0,3]){
-            color([0,1,0])nObj(13, 6, 0) cylinder(8, 6.5/2, 6.5/2);
-            cylinder(8, 6.5/2, 6.5/2);
-        }
-    }
-}
 
 module smaConnector(){
     color([1,0,0])cylinder(8, 6.5/2, 6.5/2);
@@ -497,6 +461,23 @@ module enclosureFlerp(l, t, h){
     
 }
 
+module enclosureFlerp2(l, t, h){
+    notchOffs=7;
+    notchDepth=5;
+    notchHeight=15;
+    difference(){
+        union(){
+            cube([l, t, h]);
+            translate([0,0,h-notchOffs-t-notchHeight]) cube([l, notchDepth+t, notchHeight+2*t]);
+        }
+        translate([0,0,h-notchOffs-notchHeight]) cube([l, notchDepth, notchHeight]);
+        flerpScrews(l,4);
+        
+    }
+    translate([0,0,h])rotate([0,90,0])cylinder(l, t, t, $fn=16);
+    
+}
+
 module rectPlace(x,y){
     translate([x,y,0]) children();
     translate([x,-y,0]) children();
@@ -609,6 +590,8 @@ module assembly(){
 }
 
 //enclosureFlerp(30, 3, 34+8+3-0.7);
+//enclosureFlerp2(30, 3, 34+8+3-0.7);
+
 
 assembly();
 

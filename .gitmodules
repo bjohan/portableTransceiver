@@ -1,0 +1,3 @@
+[submodule "measure/mixer/gpib_instrument_control"]
+	path = measure/mixer/gpib_instrument_control
+	url = https://github.com/bjohan/gpib_instrument_control.git
