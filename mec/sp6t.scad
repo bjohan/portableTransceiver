@@ -1,11 +1,12 @@
 use <util.scad>
 
-module sp6tHolePattern(l=10){
-translate([0,0,42.5+5-l])quad(35/2) cylinder(l, 3/2, 3/2);
+module placeSp6tHolePattern(l=10){
+translate([0,0,42.5+5-l])quad(35/2) children();
 }
 
 module sp6tHolePattern(l=10){
-translate([0,0,42.5+5-l])quad(35/2) cylinder(l, 3/2, 3/2);
+//translate([0,0,42.5+5-l])quad(35/2) cylinder(l, 3/2, 3/2);
+    placeSp6tHolePattern() cylinder(l, 3/2, 3/2);
 }
 
 module sp6t(){

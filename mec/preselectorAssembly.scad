@@ -533,9 +533,9 @@ module placedEnclosureMountBase(){
 
 
 
-module fanHolePattern(l){
+module fanHolePattern(l, hole=true){
     quad(20/2) cylinder(l, 1.5, 1.5);
-    cylinder(l, 24.2/2, 24.2/2);
+    if(hole) cylinder(l, 24.2/2, 24.2/2);
 }
 
 module fan(){
@@ -587,8 +587,8 @@ module assembly(){
     placedEnclosureMountBase();
     placeEnclosureMount()enclosureMountFlerpAssembly();
     fanBracket();
+    placeEnclosureMount()translate([0,0,42]) rotate([180,0,0])enclosure();
 }
-
 //enclosureFlerp(30, 3, 34+8+3-0.7);
 //enclosureFlerp2(30, 3, 34+8+3-0.7);
 

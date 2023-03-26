@@ -19,7 +19,7 @@ module smaFemale(){
     cylinder(l,r,r);
 }
 
-module relayBody(){
+module relayBody411cj(){
     r = 3;
     bs = 32.4;
     th=58.5;
@@ -36,14 +36,14 @@ module relayBody(){
     translate([0, -bs/2,6]) sphere(2.5);
 }
 
-module placeMountingPlateHolePattern(){
+module placeMountingPlateHolePattern411cj(){
     s=27.6/2;
     translate([23, 0, 0]) children();
     translate([-23, -s, 0]) children();
     translate([-23, s, 0]) children();
 }
 
-module mountingPlateBody(t=1.5){
+module mountingPlateBody411cj(t=1.5){
     l = 55;
     w = 40.4;
     
@@ -62,22 +62,22 @@ module mountingPlateBody(t=1.5){
     }
 }
 
-module mountingPlate(t=1.5){
+module mountingPlate411cj(t=1.5){
     difference(){
-        mountingPlateBody(t=t);
-        placeMountingPlateHolePattern() cylinder(t+0.5, 3.6/2, 3.6/2);
+        mountingPlateBody411cj(t=t);
+        placeMountingPlateHolePattern411cj() cylinder(t+0.5, 3.6/2, 3.6/2);
     }
 }
 
-module placeMontingBracketOnRelay() {
+module placeMontingBracketOnRelay411cj() {
     s=40.4/2;
     bs = 32.4/2;
     translate([0, bs, s])rotate([-90,0,0]) children();
 }
 
-module relay(){
-    placeMontingBracketOnRelay() mountingPlate();
-    relayBody();
+module relay411cj(){
+    placeMontingBracketOnRelay411cj() mountingPlate411cj();
+    relayBody411cj();
 }
 
 
@@ -119,15 +119,16 @@ module bracketBody(){
     difference(){
         union(){
             hull() quad(35-r, 35-r) cylinder(19.5,r,r);
-            placeMontingBracketOnRelay()mountingPlateBody(t=3.8);
+            placeMontingBracketOnRelay411cj()mountingPlateBody411cj(t=3.8);
             intersection(){
                 translate([-30,0,0]) cube(20);
-                translate([0,-2.5,0])placeMontingBracketOnRelay()mountingPlateBody(t=3.8-1.5);
+                translate([0,-2.5,0])placeMontingBracketOnRelay411cj()mountingPlateBody411cj(t=3.8-1.5);
             }
             
         }
         minkowski(){
-            relay();
+            children();
+            //relay411cj();
             sphere(0.3);
         }
         minkowski(){
@@ -137,9 +138,9 @@ module bracketBody(){
             }
             sphere(0.3);
         }
-        placeMontingBracketOnRelay(){
+        placeMontingBracketOnRelay411cj(){
             minkowski(){
-                mountingPlateBody();
+                mountingPlateBody411cj();
                 rotate([90, 0, 0])cylinder(100, 0.3, 0.3);
             }
         }
@@ -147,24 +148,74 @@ module bracketBody(){
     
 }
 
-module bracket(){
+module bracket411cj(){
     difference(){
-        bracketBody();
-        translate([0,-10,0])placeMontingBracketOnRelay() placeMountingPlateHolePattern() cylinder(20, 1.5, 1.5);
+        bracketBody() relay411cjBody();
+        translate([0,-10,0])placeMontingBracketOnRelay411cj() placeMountingPlateHolePattern411cj() cylinder(20, 1.5, 1.5);
         translate([-8,0,0])placeMixer() mixerHolePattern() cylinder(10, 0.5, 0.5);
     }
     
 }
 
+module bracket87222c(){
+    difference(){
+        bracketBody() relay87222cBody();
+        translate([0,-10,0])placeMontingBracketOnRelay411cj() placeMountingPlateHolePattern411cj() cylinder(20, 1.5, 1.5);
+        translate([-8,0,0])placeMixer() mixerHolePattern() cylinder(10, 0.5, 0.5);
+    }
+    
+}
+
+
 module placeMixer(){
     translate([20,-(22.6-6.3)/2,9.8])rotate([0,90,0])children();
 }
 
-module transferSwitchAssembly(){
+module transferSwitch411cjAssembly(){
     placeMixer() mixer();
-    relay(); 
-    bracket();
+    relay411cj(); 
+    bracket411cj();
 }
 
-transferSwitchAssembly();
+module relay87222cControlConnectorBody(){
+    difference(){
+        cCube([20.6, 8.8, 5]);
+        cCube([18.6, 6.8, 5]);
+        translate([0,5.5,0])cCube([5,5,7]);
+    }
+    translate([0,5.5,0])cCube([2,2,7]);
+}
+
+module relay87222cBody(){
+    translate([0,1.5,0]){
+        cCube([32, 32, 55]);
+        lsma=19.2-6.3;
+        quad(lsma, lsma) rotate([180,0,0])smaFemale();
+        translate([5,-11,55]) relay87222cControlConnectorBody();    
+    }
+}
+
+module placeRelay87222cHoles(){
+    lshole=18.5-2;
+    rotate([0,0,45]) quad(lshole, lshole) children();
+}
+
+module relay87222c(){
+    difference(){
+        relay87222cBody();
+        placeRelay87222cHoles() cylinder(10,1,1);
+    }
+}
+
+module placeMountingPlateOnrelay87222c(){
+    s=40.4/2;
+    bs = 32.4/2;
+    translate([0, bs, s])rotate([-90,0,0]) children();
+}
+
+bracket87222c();
+//relay87222c();
+//placeMountingPlateOnrelay87222c() mountingPlate411cj();
+//bracket411cj();
+//transferSwitch411cjAssembly();
 //bracket();

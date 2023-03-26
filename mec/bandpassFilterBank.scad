@@ -347,18 +347,7 @@ module placeHighBank(){
         rotate([0,0,180]) y(25) children();
 }
 
-module assembly(){
-    placeLowBank() filterBankLowAssembly();
-    placeHighBank() filterBankHighAssembly();
-    holderTogetherers();
-    relayBoxHolder();
-    placeRelayBox(){
-        
-        relayBox();    
-        placeBoxHolderFlerpScrews() z(3) m3Screw();
-        placeBoxHolderFlerps() flerp();
-    }
-}
+
 
 module clippingBlock(){
     translate([-150, -300+0.35/2-25, -150]) cube(300);
@@ -545,6 +534,30 @@ module flerp(){
     }
     z(1)x(-h+3)rotate([90,0,0])z(-15/2)cylinder(15, 2, 2, $fn=20);
 }
+
+
+
+module assembly(){
+    placeLowBank() filterBankLowAssembly();
+    placeHighBank() filterBankHighAssembly();
+    holderTogetherers();
+    relayBoxHolder();
+    placeRelayBox(){
+        
+        relayBox();    
+        placeBoxHolderFlerpScrews() z(3) m3Screw();
+        placeBoxHolderFlerps() flerp();
+    }
+}
+
+module screwTower(l, ri, t){
+    difference(){
+        cylinder(l, ri+t, ri+t);
+        z(t) cylinder(l, ri, ri);
+        cylinder(t+2, 1.6/2, 1.6/2, $fn=10);
+    }
+}
+
 /*placeRelayBox(){ 
     placeBoxHolderFlerpScrews() z(3) m3Screw();
     relayBox();    
@@ -557,7 +570,100 @@ placeBoxHolderFlerps() flerp();*/
 //flerp();
 //relayBoxHolder();
 //Complete assembly
+//assembly();
+
+coverLength=90;
+module protectiveCover(){
+    
+    z(coverLength+45.5) cylinder(3, 45, 45);
+    sp6tHolePattern() screwTower(coverLength, 3.5, 2);
+}
+
+module coversBody(){
+    t=1.5;
+    
+    difference(){
+        union(){
+            placeLowBank() placeSwitches()  z(45.5) cylinder(coverLength+46-45.5, 45, 45);
+            placeHighBank() placeSwitches() z(45.5) cylinder(coverLength+46-45.5, 45, 45);
+    
+        }
+        placeLowBank() placeSwitches()  cylinder(coverLength+46, 45-t, 45-t);
+        placeHighBank() placeSwitches() cylinder(coverLength+46, 45-t, 45-t);
+        
+    }
+    difference(){
+        
+        union(){
+            placeLowBank() placeSwitches() protectiveCover();
+            placeHighBank() placeSwitches() protectiveCover();
+                    placeLowBank() placeSwitches()  placeSmaBulkhead() smaBulkheadSeatBody();
+            placeHighBank() placeSwitches()  placeSmaBulkhead() smaBulkheadSeatBody();
+        }
+        placeLowBank() placeSwitches() sp6tHolePattern() z(3) cylinder(coverLength+10, 3.5, 3.5);
+        placeHighBank() placeSwitches() sp6tHolePattern() z(3) cylinder(coverLength+10, 3.5, 3.5);
+        placeLowBank() placeSwitches()  placeSmaBulkhead() smaBulkhead();
+        placeHighBank() placeSwitches()  placeSmaBulkhead() smaBulkhead();
+    }
+    /*placeHighBank() placeSwitches() {
+        for(i=[0, 3])
+        rotate([0,0,45+i*90]) y(37)z(45.5) cCube([2, 15, 136-45.5]);
+    }*/
+    //High bank braces
+    placeHighBank() placeSwitches() rotate([0,0,45]) y(37)z(45.5) cCube([2, 15, coverLength]);
+    placeHighBank() placeSwitches() rotate([0,0,90+35]) y(36.5)z(45.5) rotate([0,0,-20])cCube([2, 16, coverLength]);
+    placeHighBank() placeSwitches() rotate([0,0,180+55]) y(36.5)z(45.5) rotate([0,0,20])cCube([2, 16, coverLength]);
+    placeHighBank() placeSwitches() rotate([0,0,270+45]) y(37)z(45.5) cCube([2, 15, coverLength]);
+    /*placeLowBank() placeSwitches() {
+        for(i=[0, 3])
+        rotate([0,0,45+i*90]) y(37)z(45.5) cCube([2, 15, 136-45.5]);
+    }*/
+    //Low bank braces
+    placeLowBank() placeSwitches()rotate([0,0,45-5]) y(37)z(45.5) rotate([0,0,-5]) cCube([2, 15, coverLength]);
+    placeLowBank() placeSwitches() rotate([0,0,90+35]) y(36.5)z(45.5) rotate([0,0,-20])cCube([2, 16, coverLength]);
+    placeLowBank() placeSwitches() rotate([0,0,180+55]) y(36.5)z(45.5) rotate([0,0,20])cCube([2, 16, coverLength]);
+    placeLowBank() placeSwitches()rotate([0,0,45+270+8]) y(36.5)z(45.5) rotate([0,0,8]) cCube([2, 15.5, coverLength]);
+    
+    
+    
+}
+
+
+module endCoverA(){
+    intersection(){
+    coversBody();
+        cylinder(1000, 1000, 1000);
+    }
+}
+
+module endCoverB(){
+    mirror([0,0,1])endCoverA();
+}
+
+module placeSmaBulkhead(){
+    z(45.5) z(coverLength) z(-4) children();
+}
+
+
+module smaBulkhead(){
+    tol=0.35;
+    nr=4.0/cos(30)+tol;
+    cylinder(15,3.1+tol,3.1+tol);
+    rotate([0,0,30])cylinder(4,nr,nr, $fn=6);
+}   
+
+module smaBulkheadSeatBody(){
+    z(1) cylinder(3, 10, 10);
+}
+
+ 
+endCoverB();
+endCoverA();
 assembly();
+//smaBulkHead();
+//smaBulkheadSeatBody();
+ 
+
 
 //lower() rotate([0,90,0]) holderTogetherers();
 

@@ -1,3 +1,5 @@
+use <sp6t.scad>
+
 module cCube(v){
     x = v[0]/2;
     y = v[1]/2;
@@ -299,6 +301,7 @@ module drillGuide(){
         z(-30)allHoles(l=100);
     }
 }
+
 module placeFanScrewHoles(){
     quad(32/2, 32/2) children();
 }
@@ -332,6 +335,15 @@ module placeFan(){
     z(-57/2)x(38.2+3)rotate([0,90,0])children();
 }
 
+module fanShroudExhaustOpening(){
+    x(-10){
+        hull(){
+            z(-40) cCube([0*67.4+76.4, 68.2-6, 30]);
+            z(-57+3) cCube([76.4, 56-6, 47-3]);
+        }
+    }
+}
+
 module fanShroud(){
     intersection(){
         difference(){
@@ -340,12 +352,8 @@ module fanShroud(){
             z(-3)cCube([89, 100, 500]);
             dillate(0.35) heatSink();
             x(-10)placeFan() fanHolePattern(l=30);
-            x(-10){
-                hull(){
-                    z(-40) cCube([0*67.4+76.4, 68.2-6, 30]);
-                    z(-57+3) cCube([76.4, 56-6, 47-3]);
-                }
-            }
+            fanShroudExhaustOpening();
+            
             z(-57)shroudOpening();
         }
         z(-3)z(-100)cCube([89-2, 100, 500]);
@@ -472,29 +480,6 @@ module coverBody(){
     
 }
 
-
-module assembly1(){
-    heatSink();    
-    x(-24)rotate([0,0,90])z(6.3) sd80_0798mFootprint();
-    x(36) y(-5)rotate([0,0,90])z(6.3) ifs4Footprint();
-    x(11) y(-1.5) rotate([0,0,90])z(6.3) swlFootprint();
-    z(17 )x(11)rotate([0,0,90-22.5])z(6.3) swlBrace();
-    placeFan() fan();
-    fanShroudWithBananas();
-    placeBananaConnectors() bananaConnector();
-    coverBody();
-}
-
-module assembly2(){
-    heatSink2();
-    translate([-24, 0, 6]) rotate([0, 0, 90]) dbpAmplifier();
-    translate([8, -20, 6]) rotate([0, 0, -90]) amfAmplifier();
-    translate([31, 16, 6]) rotate([0, 0, -90]){
-        amplifier6201();
-        translate([0,0,18]) rotate([0,0,22])amplifierBrace(l=42);
-    }
-}
-
 module placeAmplifierBraceHolePattern(l=10){
     translate([-l/2, 0, 0]) children();
     translate([l/2, 0, 0]) children();
@@ -508,15 +493,707 @@ module amplifierBrace(l = 10){
     
 }
 
+module drillGuide2(){
+    difference(){
+        z(3)cCube([89+6, 56+24, 10]);
+        minkowski(){
+            heatSink2();
+            sphere(0.35);
+        }
+        z(-30)allHoles2(l=100);
+    }
+    
+}
+
+module assembly1(){
+    heatSink();    
+    x(-24)rotate([0,0,-90])z(6.3) sd80_0798mFootprint();
+    x(36) y(-5)rotate([0,0,-90])z(6.3) ifs4Footprint();
+    x(11) y(-1.5) rotate([0,0,-90])z(6.3) swlFootprint();
+    z(17 )x(11)rotate([0,0,90-22.5])z(6.3) swlBrace();
+    placeFan() fan();
+    fanShroudWithBananas();
+    placeBananaConnectors() bananaConnector();
+    //coverBody();
+}
+
+module placeAmfAmplifier(){
+    translate([7, -26, 6]) rotate([0, 0, -90]) mirror([1,0,0])children();
+}
+
+module assembly2(){
+    heatSink2();
+    translate([-24.5, 0, 6]) rotate([0, 0, -90]) dbpAmplifier();
+    placeAmfAmplifier() amfAmplifier();
+    translate([31.5, -3, 6]) rotate([0, 0, 90]){
+        amplifier6201();
+        //translate([0,0,18]) rotate([0,0,22])amplifierBrace(l=42);
+    }
+    fanShroudWithBananas();
+    placeBananaConnectors() bananaConnector();
+    placeFan() fan();
+}
+
+module allHoles2(l){
+
+placeAmfAmplifier() placeAmfAmplifierHolPattern() cylinder(l,1,1);
+translate([16,10,6])cylinder(l,1.25, 1.25);
+translate([-2.5,10,6])cylinder(l,1.25, 1.25);
+    
+}
+
+
+module bracket(){
+    d=[10, 81, 183*0+120];
+    dh=d-[-2, 2*3, 2*2*0];
+    difference(){
+        x(-39.2) translate(-d/2) cube(d);
+        x(-39.2) translate(-dh/2) cube(dh);
+    }
+};
+
+
+module fanBracket(){
+    d=[10, 89.35, 183*0+120];
+    dh=d-[-2, 2*3, 2*2*0];
+    difference(){
+        x(55.2) translate(-d/2) cube(d);
+        x(55.2) translate(-dh/2) cube(dh);
+    }
+};
+
+//bracket();
+
+
+//allHoles2(100);
 //amplifierBrace(l=30);
 
 //coverBody();
 
 //bananaHood();
 //placeBananaConnectors() bananaConnector();
-//heatSink();
-fanShroudWithBananas();
+//heatSink2();
+//fanShroudWithBananas();
+
+
+module placeAssembly1(){
+    z(-28-1)children();
+}
+
+module placeAssembly2(){
+    
+    rotate([180,0,0])z(-28-1)children();
+}
+
+module placeSp6tFan(){
+     y(20-13-15)rotate([90,0,0]) x(70*0+80+3) children();
+}
+
+module placeSp6tExhaust(){
+     y(-20+17 )rotate([-90,0,0]) x(-67-13) children();
+}
+
+module layoutTest1(){
+    z(60)assembly1();
+    rotate([180,0,0])z(60)assembly2();
+    y(20 )rotate([90,0,0]) x(85) sp6t();
+    y(-20 )rotate([-90,0,0]) x(-65) sp6t();
+}
+
+module layoutTest2(){
+    rotate([0,0,180])x(45+7) assembly2();
+    x(45+7) assembly1();
+    z(51)y(20 )rotate([90,0,0]) x(55) sp6t();
+    z(51)y(-20 )rotate([-90,0,0]) x(-55) sp6t();
+}
+module layoutTest3(){
+    /*z(-28)assembly1();
+    rotate([180,0,0])z(-28)assembly2();*/
+    placeAssembly1() assembly1();
+    placeAssembly2() assembly2();
+    //y(20-13 )rotate([90,0,0]) x(70*0+80+3) sp6t();
+    //y(-20+17 )rotate([-90,0,0]) x(-67-13) sp6t();
+    placeSp6tFan() sp6t();
+    placeSp6tExhaust() sp6t();
+}
+
+
+
+module exhaustBoundingBox(){
+       translate([-38,0,-70])cCube([15,90,60]);
+}
+module exhaustInterfacePart(){
+    intersection(){
+        assembly2();
+        exhaustBoundingBox();
+    }
+}
+
+module fanInterfaceBoundingBox(){
+       translate([58,0,-70])cCube([19,90,53]);
+}
+
+module fanInterfacePart(){
+    intersection(){
+        assembly2();
+        fanInterfaceBoundingBox();
+    }
+}
+
+
+module exhaustSideInterface(){
+    difference(){
+        intersection(){
+            dillate(3) exhaustInterfacePart();
+                
+            exhaustBoundingBox();
+        }
+        fanShroudExhaustOpening();
+        
+        hull(){
+            dillate(0.3){
+                intersection(){
+                    fanShroud();
+                    exhaustBoundingBox();
+                }
+            }
+        }
+        placeBracketScrewExhaustRight()z(-5)cylinder(15, 1.5,1.5);
+        placeBracketScrewExhaustLeft()z(-5) cylinder(15, 1.5,1.5);
+
+    }
+
+    placeBracketScrewExhaustRight() difference() { cylinder(5, 5, 5); cylinder(10, 1.5,1.5);}
+    placeBracketScrewExhaustLeft()difference() { cylinder(5, 5, 5); cylinder(10, 1.5,1.5);}
+}
+
+
+module fanSideInterface(){
+    difference(){
+        intersection(){
+            dillate(3)fanInterfacePart();
+            fanInterfaceBoundingBox();
+        }
+        minkowski(){
+            fanInterfacePart();
+            rotate([0,-90,0])cylinder(100, 0.3, 0.3);
+        }
+        placeFan() hull(){ 
+            minkowski(){
+            fan();
+                rotate([0,0,0])cylinder(100, 0.3, 0.3);
+            }
+        }
+        placeBracketScrewFanRight()z(-5)cylinder(15, 1.5,1.5);
+        placeBracketScrewFanLeft()z(-5) cylinder(15, 1.5,1.5);
+    }
+    placeBracketScrewFanRight() difference() { cylinder(5, 5, 5); cylinder(10, 1.5,1.5);}
+    placeBracketScrewFanLeft() difference() { cylinder(5, 5, 5); cylinder(10, 1.5,1.5);}
+}
+
+module exhaustBracketsBody(){
+    placeAssembly1()exhaustSideInterface();
+    placeAssembly2() exhaustSideInterface();
+    bracket();
+}
+
+module exhaustBrackets(){
+    difference(){
+        exhaustBracketsBody();
+        placeAssembly1() placeBracketScrewExhaustRight() z(-20) cylinder(60, 1.5, 1.5);
+        placeAssembly1() placeBracketScrewExhaustLeft() z(-20) cylinder(60, 1.5, 1.5);
+        placeAssembly2() placeBracketScrewExhaustRight() z(-20) cylinder(60, 1.5, 1.5);
+        placeAssembly2() placeBracketScrewExhaustLeft() z(-20) cylinder(60, 1.5, 1.5);
+    }
+}
+
+module fanBracketsBody(){
+    placeAssembly1() fanSideInterface();
+    placeAssembly2() fanSideInterface();
+    fanBracket();
+}
+
+module fanBrackets(){
+    difference(){
+        fanBracketsBody();
+        placeAssembly1() placeBracketScrewFanRight() z(-20) cylinder(60, 1.5, 1.5);
+        placeAssembly1() placeBracketScrewFanLeft() z(-20) cylinder(60, 1.5, 1.5);
+        placeAssembly2() placeBracketScrewFanRight() z(-20) cylinder(60, 1.5, 1.5);
+        placeAssembly2() placeBracketScrewFanLeft() z(-20) cylinder(60, 1.5, 1.5);
+    }
+}
+
+module placeBracketScrewFanRight(j=[0:3]){
+    for(i = j)
+    translate([55, 52-10, -30+15*i])rotate([-90,0,0])children();
+}
+module placeBracketScrewFanLeft(j=[0:3]){
+    for(i = j)
+    translate([55, -52+10, -30+15*i])rotate([90,0,0])children();
+}
+
+module placeBracketScrewExhaustRight(j=[0:3]){
+    for(i = j)
+    translate([-38, 50-2-10, -30+15*i])rotate([-90,0,0])children();
+}
+module placeBracketScrewExhaustLeft(j=[0:3]){
+    for(i = j)
+    translate([-38, -48+10, -30+15*i])rotate([90,0,0])children();
+}
+
+
+
+
+module placeBracketScrewsRight(j=[0:3]){
+    placeBracketScrewExhaustRight(j) children();
+    placeBracketScrewFanRight(j) children();
+    
+}
+
+
+module placeBracketScrewsLeft(j=[0:3]){
+    placeBracketScrewExhaustLeft(j) children();
+    placeBracketScrewFanLeft(j) children();
+}
+
+module leftBracket(){
+    placeAssembly1() placeBracketScrewsLeft() cylinder(10,1.5, 1.5);
+}
+
+module assembly1RightBracket(){
+    difference(){
+        hull(){
+            placeAssembly1() placeBracketScrewsRight(j=[0]) cylinder(8,8, 8);
+        }
+        placeAssembly1() placeBracketScrewsRight(j=[0]) cylinder(10,1.6, 1.6, $fn=10);
+        minkowski(){
+            union(){
+                exhaustBrackets();
+                fanBrackets();
+            }
+            sphere(0.35);
+        }
+    }
+}
+
+module assembly1LeftBracket(){
+    difference(){
+        hull(){
+            placeAssembly1() placeBracketScrewsLeft(j=[0]) cylinder(8,8, 8);
+        }
+        placeAssembly1() placeBracketScrewsLeft(j=[0]) cylinder(10,1.6, 1.6, $fn=10);
+        minkowski(){
+            union(){
+                exhaustBrackets();
+                fanBrackets();
+            }
+            sphere(0.35);
+        }
+    }
+}
+
+module assembly2RightBracket(){
+    difference(){
+        hull(){
+            placeAssembly2() placeBracketScrewsRight(j=[0]) cylinder(8,8, 8);
+        }
+        placeAssembly2() placeBracketScrewsRight(j=[0]) cylinder(10,1.6, 1.6, $fn=10);
+        minkowski(){
+            union(){
+                exhaustBrackets();
+                fanBrackets();
+            }
+            sphere(0.35);
+        }
+    }
+}
+
+module assembly2LeftBracket(){
+    difference(){
+        hull(){
+            placeAssembly2() placeBracketScrewsLeft(j=[0]) cylinder(8,8, 8);
+        }
+        placeAssembly2() placeBracketScrewsLeft(j=[0]) cylinder(10,1.6, 1.6, $fn=10);
+        minkowski(){
+            union(){
+                exhaustBrackets();
+                fanBrackets();
+            }
+            sphere(0.35);
+        }
+    }
+}
+
+
+module sp6tHolderBodyInnerSide(offs=0, length=42){
+    difference(){
+        hull(){ 
+            difference(){
+                z(offs-37) placeSp6tHolePattern() cylinder(length, 5, 5);
+                translate([-25,0,0])cCube([50, 50, 50]);
+            }
+        }
+        minkowski(){
+            sp6t();
+            sphere(0.4);
+        }
+        z(offs-37) placeSp6tHolePattern()cylinder(length, 1.5, 1.5);
+    }
+}
+
+
+module sp6tHolderBody(offs=0, length=42){
+    difference(){
+        hull() z(offs-37) placeSp6tHolePattern()cylinder(length, 5, 5);
+        minkowski(){
+            sp6t();
+            sphere(0.4);
+        }
+        z(offs-37) placeSp6tHolePattern()cylinder(length, 1.5, 1.5);
+    }
+}
+
+
+
+
+module sp6tExhaustSmaSideBracketBody(){
+    placeSp6tExhaust() sp6tHolderBody(length=5, offs=38);
+    hull() {
+        placeSp6tExhaust() sp6tHolderBodyInnerSide(length=5, offs=38);
+        placeAssembly1() placeBracketScrewExhaustRight([2, 3]) cylinder(5+3, 5+3, 5+3);
+        placeAssembly2() placeBracketScrewExhaustLeft([2, 3]) cylinder(5+3, 5+3, 5+3);
+    }
+}
+module sp6tExhaustSmaSideBracket(){
+    difference(){
+        sp6tExhaustSmaSideBracketBody();
+        placeSp6tExhaust(){
+            minkowski(){
+                sp6t();
+                sphere(0.4);
+            }
+            //z(offs-37) placeSp6tHolePattern()cylinder(100, 1.5, 1.5);
+            z(-37) placeSp6tHolePattern()cylinder(100, 1.5, 1.5);
+        }
+        hull() bracket();
+        placeAssembly1() placeBracketScrewExhaustRight([2, 3]) z(-1) cylinder(6.35, 5.35, 5.35);
+        placeAssembly2() placeBracketScrewExhaustLeft([2, 3]) z(-1) cylinder(6.35, 5.35, 5.35);
+        placeAssembly1() placeBracketScrewExhaustRight([2, 3]) cylinder(15, 1.6, 1.6, $fn=10);
+        placeAssembly2() placeBracketScrewExhaustLeft([2, 3]) cylinder(15, 1.6, 1.6, $fn=10);
+        translate([-29.3, 42, -20])cCube([10, 10, 40]);
+    }
+}
+
+module sp6tExhaustBottomSideBracketBody(){
+    placeSp6tExhaust() sp6tHolderBody(length=5, offs=0);
+    hull() {
+        placeSp6tExhaust() sp6tHolderBodyInnerSide(length=5, offs=0);
+        translate([-3,0,0]){
+            placeAssembly1() placeBracketScrewExhaustLeft([2, 3]) z(2) cylinder(3, 5, 5);
+            placeAssembly2() placeBracketScrewExhaustRight([2, 3]) z(2) cylinder(3, 5, 5);
+        }
+    }
+    placeAssembly1() placeBracketScrewExhaustLeft([2, 3]) z(2) cylinder(3, 5, 5);
+    placeAssembly2() placeBracketScrewExhaustRight([2, 3]) z(2) cylinder(3, 5, 5);
+    placeAssembly1() placeBracketScrewExhaustLeft([2, 3]) cylinder(5+3, 5+3, 5+3);
+    placeAssembly2() placeBracketScrewExhaustRight([2, 3]) cylinder(5+3, 5+3, 5+3);
+}
+
+module sp6tExhaustBottomSideBracket(){
+    difference(){
+        sp6tExhaustBottomSideBracketBody();
+        placeSp6tExhaust(){
+            minkowski(){
+                z(-20) sp6t();
+                //z(10)sp6t();
+                sphere(0.4);
+            }
+            //z(offs-37) placeSp6tHolePattern()cylinder(100, 1.5, 1.5);
+            z(-37) placeSp6tHolePattern()cylinder(100, 1.5, 1.5);
+        }
+        hull() bracket();
+        placeAssembly1() placeBracketScrewExhaustLeft([2, 3]) cylinder(5, 5, 5);
+        placeAssembly2() placeBracketScrewExhaustRight([2, 3]) cylinder(5, 5, 5);
+        placeAssembly1() placeBracketScrewExhaustLeft([2, 3]) cylinder(15, 1.6, 1.6, $fn=10);
+        placeAssembly2() placeBracketScrewExhaustRight([2, 3]) cylinder(15, 1.6, 1.6, $fn=10);
+        placeSp6tExhaust() z(-100) placeSp6tHolePattern()cylinder(100, 1.5, 1.5);
+        placeSp6tExhaust() z(-137) placeSp6tHolePattern()cylinder(100, 4, 4);
+        translate([-40,-30+13-3, 15])cCube([20,20,20]);
+        translate([-40,-30+13-3, -15-20])cCube([20,20,20]);
+    }
+    
+}
+
+module sp6tBodyExhaust(){
+    difference(){
+    placeSp6tExhaust() sp6tHolderBody();
+        minkowski(){
+            union(){
+                sp6tExhaustSmaSideBracket();
+                sp6tExhaustBottomSideBracket();
+            }
+            sphere(0.35);
+        }
+    }
+}
+
+
+module sp6tFanSmaSideBracketBody(){
+    placeSp6tFan() sp6tHolderBody(length=37, offs=5);//sp6tHolderBody(length=5, offs=38);
+    hull() {
+        placeSp6tFan() rotate([0,0,180])sp6tHolderBodyInnerSide(length=5, offs=38);
+        placeAssembly2() placeBracketScrewFanRight([2, 3]) cylinder(5+3, 5+3, 5+3);
+        placeAssembly1() placeBracketScrewFanLeft([2, 3]) cylinder(5+3, 5+3, 5+3);
+    }
+}
+module sp6tFanSmaSideBracket(){
+    difference(){
+        sp6tFanSmaSideBracketBody();
+        placeSp6tFan() minkowski() {sp6t(); sphere(0.35);};
+        placeSp6tFan() placeSp6tHolePattern() z(-50) cylinder(100, 1.5, 1.5);
+        placeAssembly2() placeBracketScrewFanRight([2, 3]) z(-5) cylinder(15, 1.6, 1.6);
+        placeAssembly1() placeBracketScrewFanLeft([2, 3]) z(-5) cylinder(15, 1.6, 1.6);
+        minkowski(){
+            union(){
+                fanBracket();
+                placeAssembly2() placeBracketScrewFanRight([2, 3]) cylinder(5, 5, 5);
+                placeAssembly1() placeBracketScrewFanLeft([2, 3]) cylinder(5, 5, 5);
+            }
+            sphere(0.35);
+        }
+    }
+}
+
+
+module sp6tFanBottomSideBracketBody(){
+    placeSp6tFan() sp6tHolderBody(length=5,  offs=0);//sp6tHolderBody(length=5, offs=38);
+    hull() {
+        placeSp6tFan() rotate([0,0,180])sp6tHolderBodyInnerSide(length=5, offs=0);
+        placeAssembly2() placeBracketScrewFanLeft([2, 3]) cylinder(5+3, 5+3, 5+3);
+        placeAssembly1() placeBracketScrewFanRight([2, 3]) cylinder(5+3, 5+3, 5+3);
+    }
+}
+module sp6tFanBottomSideBracket(){
+    difference(){
+        sp6tFanBottomSideBracketBody();
+        placeSp6tFan() minkowski() {sp6t(); sphere(0.35);};
+        placeSp6tFan() placeSp6tHolePattern() z(-150) cylinder(200, 1.6, 1.6, $fn=20);
+        placeAssembly2() placeBracketScrewFanLeft([2, 3]) z(-5) cylinder(15, 1.6, 1.6, $fn=20);
+        placeAssembly1() placeBracketScrewFanRight([2, 3]) z(-5) cylinder(15, 1.6, 1.6, $fn=20);
+        minkowski(){
+            union(){
+                hull() fanBracket();
+                translate([-5, -3, 0]) hull() fanBracket();
+                placeAssembly2() placeBracketScrewFanLeft([2, 3]) cylinder(5, 5, 5);
+                placeAssembly1() placeBracketScrewFanRight([2, 3]) cylinder(5, 5, 5);
+            }
+            sphere(0.35);
+        }
+        placeSp6tFan() placeSp6tHolePattern() z(-37-50) cylinder(50, 4, 4);
+    }
+    
+}
+
+
+
+
+
+module screwTower(t, ri, rs, l){
+    difference(){
+        cylinder(l, ri+t, ri+t);
+        z(t) cylinder(l, ri, ri);
+        cylinder(l+t,rs, rs);
+    }
+    
+}
+
+module screwToweriHole(t, ri, rs, l){
+    difference(){
+        //cylinder(l, ri+t, ri+t);
+        z(t) cylinder(l, ri, ri);
+        //cylinder(l+t,rs, rs);
+    }
+    
+}
+
+
+
+/*placeSp6tExhaust() sp6t();
+placeSp6tFan() sp6t();
+sp6tFanBottomSideBracket();
+sp6tExhaustSmaSideBracket();*/
+
+module sideLidABody(){
+    t = 2;
+    difference(){
+        translate([-20,70,-37]) cCube([170, 50, 74]);
+        translate([-20,70-t,-37+t]) cCube([170-2*t, 50, 74-2*t]);
+        placeAScrews() screwToweriHole(3, 5, 1.6, 50);
+    }
+    intersection(){
+        placeAScrews() screwTower(3, 5, 1.6, 50);
+        translate([-20,60,-37]) cCube([170, 70, 74]);
+    }
+    placeSideLidABulkhead() cylinder(5, 8, 8);
+}
+
+module sideLidA(){
+    difference(){
+        sideLidABody();
+        
+        minkowski() {
+            sphere(0.35);
+            sp6tFanBottomSideBracket();
+            //sp6tExhaustSmaSideBracket();
+        }
+        minkowski() {
+            sphere(0.35);
+            //sp6tFanBottomSideBracket();
+            sp6tExhaustSmaSideBracket();
+        }
+        placeSideLidABulkhead() smaBulkHead();
+    }
+}
+
+
+
+
+module placeAScrew(){
+    z(8)children();
+}
+module placeAScrews(){
+    placeAssembly2() placeBracketScrewFanLeft([2]) placeAScrew()children();
+    placeAssembly1() placeBracketScrewFanRight([2]) placeAScrew()children();
+    placeAssembly2() placeBracketScrewExhaustLeft([2]) placeAScrew()children();
+    placeAssembly1() placeBracketScrewExhaustRight([2]) placeAScrew()children();
+}
+
+
+module placeBScrews(){
+    placeAssembly2() placeBracketScrewFanRight([2]) placeAScrew()children();
+    placeAssembly1() placeBracketScrewFanLeft([2]) placeAScrew()children();
+    placeAssembly2() placeBracketScrewExhaustRight([2]) placeAScrew()children();
+    placeAssembly1() placeBracketScrewExhaustLeft([2]) placeAScrew()children();
+}
+
+
+module sideLidB(){
+    difference(){
+        sideLidBBody();
+        
+        minkowski() {
+            sphere(0.35);
+            sp6tFanSmaSideBracket();
+        }
+        minkowski() {
+            sphere(0.35);
+            sp6tExhaustBottomSideBracket();
+        }
+        placeSideLidBBulkhead() smaBulkHead();
+    }
+}
+
+
+module smaBulkHead(){
+    tol=0.35;
+    nr=4.0/cos(30)+tol;
+    cylinder(15,3.1+tol,3.1+tol);
+    rotate([0,0,30])cylinder(4,nr,nr, $fn=6);
+}   
+
+
+/*placeSp6tExhaust() sp6t();
+placeSp6tFan() sp6t();
+sp6tFanSmaSideBracket();
+sp6tExhaustBottomSideBracket();
+sideLidB();*/
+
+module sideLidBBody(){
+    t = 2;
+    position = [20,-75,-37];
+    size= [170, 50, 74];
+    difference(){
+        translate(position) cCube(size);
+        translate(position+[0,t,t]) cCube(size+[-2*t, 0, -2*t]);
+        placeBScrews() screwToweriHole(3, 5, 1.6, 70);
+        placeBananaConnectorsOnLidB() bananaConnectorBody(e=0.35);
+        placeSp6tFan() translate([20,0,40])cCube([50, 50, 10-2]);
+    }
+    intersection(){
+        placeBScrews() screwTower(3, 6.5, 1.6, 70);
+        translate(position+[-10,10,0]) cCube(size+[0, 20, 0]);
+    }
+    placeSideLidBBulkhead() cylinder(5, 8, 8);
+}
+
+module placeBananaConnectorsOnLidB(){
+    translate([-68,-75,19.05/2]) rotate([0,90,0]) rotate([0, 0, 90]) children();
+    translate([-68,-75,-19.05/2]) rotate([0,90,0]) rotate([0, 0, 90]) children();
+}
+
+module assembly(){
+    exhaustBrackets();
+    fanBrackets();
+    layoutTest3();
+    assembly1RightBracket();
+    assembly1LeftBracket();
+    assembly2RightBracket();
+    assembly2LeftBracket();
+    sp6tBodyExhaust();
+    sp6tExhaustSmaSideBracket();
+    sp6tExhaustBottomSideBracket();
+    sp6tFanBottomSideBracket();
+    sp6tFanSmaSideBracket();
+    sideLidA();
+    sideLidB();
+    placeBananaConnectorsOnLidB() bananaConnectorBody();
+    placeSideLidBBulkhead() smaBulkHead();
+    placeSideLidABulkhead() smaBulkHead();
+}
+
+module placeSideLidBBulkhead(){
+    placeSp6tFan() z(92-4-2) children();
+}
+
+module placeSideLidABulkhead(){
+    placeSp6tExhaust() z(98-2-4) children();
+}
+
+
+
+//sideLidA();
+//sideLidB();
+//placeSp6tExhaust() sp6t();
+//placeSp6tFan() sp6t();
+
+
+//
+assembly();
+//sideLidB();
+
+//placeBananaConnectorsOnLidB() bananaConnectorBody();
+//placeBananaConnectorsOnLidB() bananaConnectorBody();
+//assembly1RightBracket();
+//assembly2LeftBracket();
+
+
+//fanBracket();
+//placeSp6tFan() sp6tHolderBody();
+//placeSp6tFan() sp6t();
+//sp6t();
+//sp6tHolderBodyInnerSide();
+//placeSp6tExhaust()  sp6tHolderBodyInnerSide();
+//placeSp6tExhaust() sp6t();
+
+
+//fanBrackets();
+//fanSideInterface();
+//exhaustSideInterface();
 //assembly2();
+//fanShroud();
 
 
+//layoutTest2();
+//layoutTest1();
 //drillGuide();
+//drillGuide2();

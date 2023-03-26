@@ -126,12 +126,12 @@ roundedCorners([40,40,3], 3, $fn=20);
 module fanGrill(){
 difference(){
     roundedCorners([40,40,4], 3, $fn=20);
-    fanInletHoles(10, 1.75);
+    fanInletHoles(10);//, 1.75);
     quad(32/2, 32/2) cylinder(10,1.5,1.5);
     translate([0,0,2])fanHolePattern();
 }
 }
-fanGrill();
-//lidVentilatedHex();
+//fanGrill();
+lidVentilatedHex();
 //lidDrillTemplateCenter();
 //lidDrillTemplateLarge();
