@@ -535,110 +535,6 @@ Wire Wire Line
 Connection ~ 1550 1900
 Text Label 700  6200 0    50   ~ 0
 Vin
-$Comp
-L Device:D_Schottky_KAK D3
-U 1 1 5CFA2ABB
-P 3250 5100
-F 0 "D3" V 3179 5240 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3270 5240 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 5100 50  0001 C CNN
-F 3 "~" H 3250 5100 50  0001 C CNN
-	1    3250 5100
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3100 6400 3250 6400
-Wire Wire Line
-	2600 6700 3250 6700
-Wire Wire Line
-	3100 4850 3250 4850
-Wire Wire Line
-	2600 5150 3250 5150
-Wire Wire Line
-	3100 3350 3250 3350
-Wire Wire Line
-	2600 3650 3250 3650
-Wire Wire Line
-	3100 1800 3200 1800
-Wire Wire Line
-	2600 2100 3200 2100
-$Comp
-L Device:D_Schottky_KAK D4
-U 1 1 5CFA34A7
-P 3250 6650
-F 0 "D4" V 3179 6790 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3270 6790 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 6650 50  0001 C CNN
-F 3 "~" H 3250 6650 50  0001 C CNN
-	1    3250 6650
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3350 6400 4000 6400
-Wire Wire Line
-	3350 4850 4000 4850
-$Comp
-L Device:D_Schottky_KAK D2
-U 1 1 5CFA3654
-P 3250 3600
-F 0 "D2" V 3179 3740 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3270 3740 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 3600 50  0001 C CNN
-F 3 "~" H 3250 3600 50  0001 C CNN
-	1    3250 3600
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3350 3350 4000 3350
-$Comp
-L Device:D_Schottky_KAK D1
-U 1 1 5CFA36D4
-P 3200 2050
-F 0 "D1" V 3129 2190 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3220 2190 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3200 2050 50  0001 C CNN
-F 3 "~" H 3200 2050 50  0001 C CNN
-	1    3200 2050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3300 1800 4000 1800
-Wire Wire Line
-	3300 1800 3200 1800
-Connection ~ 3300 1800
-Connection ~ 3200 1800
-Wire Wire Line
-	3200 2250 3200 2100
-Connection ~ 3200 2100
-Wire Wire Line
-	3200 2100 4450 2100
-Wire Wire Line
-	3250 3350 3350 3350
-Connection ~ 3250 3350
-Connection ~ 3350 3350
-Wire Wire Line
-	3250 3800 3250 3650
-Connection ~ 3250 3650
-Wire Wire Line
-	3250 3650 4450 3650
-Wire Wire Line
-	3250 4850 3350 4850
-Connection ~ 3250 4850
-Connection ~ 3350 4850
-Wire Wire Line
-	3250 5300 3250 5150
-Connection ~ 3250 5150
-Wire Wire Line
-	3250 5150 4450 5150
-Wire Wire Line
-	3250 6400 3350 6400
-Connection ~ 3250 6400
-Connection ~ 3350 6400
-Wire Wire Line
-	3250 6850 3250 6700
-Connection ~ 3250 6700
-Wire Wire Line
-	3250 6700 4450 6700
 Wire Wire Line
 	5150 6500 5150 6400
 Wire Wire Line
@@ -988,4 +884,104 @@ F 3 "~" H 650 1800 50  0001 C CNN
 	1    650  1800
 	0    1    1    0   
 $EndComp
+$Comp
+L Device:D_Schottky_AKA D4
+U 1 1 5D100253
+P 3450 6600
+F 0 "D4" H 3475 6878 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3475 6787 50  0000 C CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3450 6600 50  0001 C CNN
+F 3 "~" H 3450 6600 50  0001 C CNN
+	1    3450 6600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 6400 3300 6400
+Wire Wire Line
+	2600 6700 3650 6700
+Wire Wire Line
+	3650 6600 3650 6700
+Connection ~ 3650 6700
+Wire Wire Line
+	3650 6700 4450 6700
+Wire Wire Line
+	3300 6600 3300 6400
+Connection ~ 3300 6400
+Wire Wire Line
+	3300 6400 4000 6400
+Wire Wire Line
+	3100 4850 3200 4850
+Wire Wire Line
+	3100 3350 3250 3350
+Wire Wire Line
+	2600 3650 3600 3650
+Wire Wire Line
+	3100 1800 3200 1800
+Wire Wire Line
+	2600 2100 3550 2100
+$Comp
+L Device:D_Schottky_AKA D2
+U 1 1 5D10D9F6
+P 3350 5050
+F 0 "D2" H 3375 5328 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3375 5237 50  0000 C CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3350 5050 50  0001 C CNN
+F 3 "~" H 3350 5050 50  0001 C CNN
+	1    3350 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky_AKA D3
+U 1 1 5D10DA9E
+P 3400 3550
+F 0 "D3" H 3425 3828 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3425 3737 50  0000 C CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3400 3550 50  0001 C CNN
+F 3 "~" H 3400 3550 50  0001 C CNN
+	1    3400 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky_AKA D1
+U 1 1 5D10DB7D
+P 3350 2000
+F 0 "D1" H 3375 2278 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3375 2187 50  0000 C CNN
+F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3350 2000 50  0001 C CNN
+F 3 "~" H 3350 2000 50  0001 C CNN
+	1    3350 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 2000 3200 1800
+Connection ~ 3200 1800
+Wire Wire Line
+	3200 1800 4000 1800
+Wire Wire Line
+	3550 2000 3550 2100
+Connection ~ 3550 2100
+Wire Wire Line
+	3550 2100 4450 2100
+Wire Wire Line
+	3250 3550 3250 3350
+Connection ~ 3250 3350
+Wire Wire Line
+	3250 3350 4000 3350
+Wire Wire Line
+	3600 3550 3600 3650
+Connection ~ 3600 3650
+Wire Wire Line
+	3600 3650 4450 3650
+Wire Wire Line
+	3200 5050 3200 4850
+Connection ~ 3200 4850
+Wire Wire Line
+	3200 4850 4000 4850
+Wire Wire Line
+	3550 5050 3550 5150
+Wire Wire Line
+	2600 5150 3550 5150
+Connection ~ 3550 5150
+Wire Wire Line
+	3550 5150 4450 5150
 $EndSCHEMATC

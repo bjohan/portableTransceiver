@@ -535,110 +535,6 @@ Wire Wire Line
 Connection ~ 1550 1900
 Text Label 700  6200 0    50   ~ 0
 Vin
-$Comp
-L Device:D_Schottky_KAK D3
-U 1 1 5CFA2ABB
-P 3250 5100
-F 0 "D3" V 3179 5240 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3270 5240 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 5100 50  0001 C CNN
-F 3 "~" H 3250 5100 50  0001 C CNN
-	1    3250 5100
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3100 6400 3250 6400
-Wire Wire Line
-	2600 6700 3250 6700
-Wire Wire Line
-	3100 4850 3250 4850
-Wire Wire Line
-	2600 5150 3250 5150
-Wire Wire Line
-	3100 3350 3250 3350
-Wire Wire Line
-	2600 3650 3250 3650
-Wire Wire Line
-	3100 1800 3200 1800
-Wire Wire Line
-	2600 2100 3200 2100
-$Comp
-L Device:D_Schottky_KAK D4
-U 1 1 5CFA34A7
-P 3250 6650
-F 0 "D4" V 3179 6790 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3270 6790 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 6650 50  0001 C CNN
-F 3 "~" H 3250 6650 50  0001 C CNN
-	1    3250 6650
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3350 6400 4000 6400
-Wire Wire Line
-	3350 4850 4000 4850
-$Comp
-L Device:D_Schottky_KAK D2
-U 1 1 5CFA3654
-P 3250 3600
-F 0 "D2" V 3179 3740 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3270 3740 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3250 3600 50  0001 C CNN
-F 3 "~" H 3250 3600 50  0001 C CNN
-	1    3250 3600
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3350 3350 4000 3350
-$Comp
-L Device:D_Schottky_KAK D1
-U 1 1 5CFA36D4
-P 3200 2050
-F 0 "D1" V 3129 2190 50  0000 L CNN
-F 1 "D_Schottky_KAK" V 3220 2190 50  0000 L CNN
-F 2 "TO_SOT_Packages_THT:TO-220-3_Vertical" H 3200 2050 50  0001 C CNN
-F 3 "~" H 3200 2050 50  0001 C CNN
-	1    3200 2050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3300 1800 4000 1800
-Wire Wire Line
-	3300 1800 3200 1800
-Connection ~ 3300 1800
-Connection ~ 3200 1800
-Wire Wire Line
-	3200 2250 3200 2100
-Connection ~ 3200 2100
-Wire Wire Line
-	3200 2100 4450 2100
-Wire Wire Line
-	3250 3350 3350 3350
-Connection ~ 3250 3350
-Connection ~ 3350 3350
-Wire Wire Line
-	3250 3800 3250 3650
-Connection ~ 3250 3650
-Wire Wire Line
-	3250 3650 4450 3650
-Wire Wire Line
-	3250 4850 3350 4850
-Connection ~ 3250 4850
-Connection ~ 3350 4850
-Wire Wire Line
-	3250 5300 3250 5150
-Connection ~ 3250 5150
-Wire Wire Line
-	3250 5150 4450 5150
-Wire Wire Line
-	3250 6400 3350 6400
-Connection ~ 3250 6400
-Connection ~ 3350 6400
-Wire Wire Line
-	3250 6850 3250 6700
-Connection ~ 3250 6700
-Wire Wire Line
-	3250 6700 4450 6700
 Wire Wire Line
 	5150 6500 5150 6400
 Wire Wire Line
@@ -873,10 +769,10 @@ Wire Wire Line
 Wire Wire Line
 	3350 6050 3800 6050
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J16
 U 1 1 5CFFE72F
 P 1050 6200
-F 0 "J?" H 1077 6226 50  0000 L CNN
+F 0 "J16" H 1077 6226 50  0000 L CNN
 F 1 "Conn_01x01_Female" H 1077 6135 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 6200 50  0001 C CNN
 F 3 "~" H 1050 6200 50  0001 C CNN
@@ -886,10 +782,10 @@ $EndComp
 Wire Wire Line
 	850  6200 650  6200
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J15
 U 1 1 5D002C66
 P 1050 6050
-F 0 "J?" H 1077 6076 50  0000 L CNN
+F 0 "J15" H 1077 6076 50  0000 L CNN
 F 1 "Conn_01x01_Female" H 1077 5985 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 6050 50  0001 C CNN
 F 3 "~" H 1050 6050 50  0001 C CNN
@@ -897,10 +793,10 @@ F 3 "~" H 1050 6050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J14
 U 1 1 5D002CD6
 P 1050 5900
-F 0 "J?" H 1077 5926 50  0000 L CNN
+F 0 "J14" H 1077 5926 50  0000 L CNN
 F 1 "Conn_01x01_Female" H 1077 5835 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 5900 50  0001 C CNN
 F 3 "~" H 1050 5900 50  0001 C CNN
@@ -908,10 +804,10 @@ F 3 "~" H 1050 5900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J13
 U 1 1 5D002D42
 P 1050 5750
-F 0 "J?" H 1077 5776 50  0000 L CNN
+F 0 "J13" H 1077 5776 50  0000 L CNN
 F 1 "Conn_01x01_Female" H 1077 5685 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 5750 50  0001 C CNN
 F 3 "~" H 1050 5750 50  0001 C CNN
@@ -919,10 +815,10 @@ F 3 "~" H 1050 5750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J12
 U 1 1 5D002DAE
 P 1050 5600
-F 0 "J?" H 1077 5626 50  0000 L CNN
+F 0 "J12" H 1077 5626 50  0000 L CNN
 F 1 "Conn_01x01_Female" H 1077 5535 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1050 5600 50  0001 C CNN
 F 3 "~" H 1050 5600 50  0001 C CNN
@@ -942,10 +838,10 @@ Connection ~ 850  6050
 Wire Wire Line
 	850  6050 850  6200
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J11
 U 1 1 5D009A01
 P 650 4850
-F 0 "J?" V 497 4898 50  0000 L CNN
+F 0 "J11" V 497 4898 50  0000 L CNN
 F 1 "Conn_01x01_Female" V 588 4898 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 650 4850 50  0001 C CNN
 F 3 "~" H 650 4850 50  0001 C CNN
@@ -953,10 +849,10 @@ F 3 "~" H 650 4850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J17
 U 1 1 5D009D89
 P 1950 6400
-F 0 "J?" V 1797 6448 50  0000 L CNN
+F 0 "J17" V 1797 6448 50  0000 L CNN
 F 1 "Conn_01x01_Female" V 1888 6448 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 1950 6400 50  0001 C CNN
 F 3 "~" H 1950 6400 50  0001 C CNN
@@ -967,10 +863,10 @@ Connection ~ 1950 6200
 Wire Wire Line
 	1950 6200 1700 6200
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J10
 U 1 1 5D00AF57
 P 650 3350
-F 0 "J?" V 497 3398 50  0000 L CNN
+F 0 "J10" V 497 3398 50  0000 L CNN
 F 1 "Conn_01x01_Female" V 588 3398 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 650 3350 50  0001 C CNN
 F 3 "~" H 650 3350 50  0001 C CNN
@@ -978,14 +874,126 @@ F 3 "~" H 650 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Connector:Conn_01x01_Female J?
+L Connector:Conn_01x01_Female J9
 U 1 1 5D00BAE2
 P 650 1800
-F 0 "J?" V 497 1848 50  0000 L CNN
+F 0 "J9" V 497 1848 50  0000 L CNN
 F 1 "Conn_01x01_Female" V 588 1848 50  0000 L CNN
 F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 650 1800 50  0001 C CNN
 F 3 "~" H 650 1800 50  0001 C CNN
 	1    650  1800
 	0    1    1    0   
 $EndComp
+$Comp
+L Device:D_Schottky_AKA D?
+U 1 1 5D100253
+P 3450 6600
+F 0 "D?" H 3475 6878 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3475 6787 50  0000 C CNN
+F 2 "" H 3450 6600 50  0001 C CNN
+F 3 "~" H 3450 6600 50  0001 C CNN
+	1    3450 6600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 6400 3300 6400
+Wire Wire Line
+	2600 6700 3650 6700
+Wire Wire Line
+	3650 6500 3650 6600
+Wire Wire Line
+	3650 6600 3650 6700
+Connection ~ 3650 6600
+Connection ~ 3650 6700
+Wire Wire Line
+	3650 6700 4450 6700
+Wire Wire Line
+	3300 6600 3300 6400
+Connection ~ 3300 6400
+Wire Wire Line
+	3300 6400 4000 6400
+Wire Wire Line
+	3100 4850 3200 4850
+Wire Wire Line
+	3100 3350 3250 3350
+Wire Wire Line
+	2600 3650 3600 3650
+Wire Wire Line
+	3100 1800 3200 1800
+Wire Wire Line
+	2600 2100 3550 2100
+$Comp
+L Device:D_Schottky_AKA D?
+U 1 1 5D10D9F6
+P 3350 5050
+F 0 "D?" H 3375 5328 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3375 5237 50  0000 C CNN
+F 2 "" H 3350 5050 50  0001 C CNN
+F 3 "~" H 3350 5050 50  0001 C CNN
+	1    3350 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky_AKA D?
+U 1 1 5D10DA9E
+P 3400 3550
+F 0 "D?" H 3425 3828 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3425 3737 50  0000 C CNN
+F 2 "" H 3400 3550 50  0001 C CNN
+F 3 "~" H 3400 3550 50  0001 C CNN
+	1    3400 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D_Schottky_AKA D?
+U 1 1 5D10DB7D
+P 3350 2000
+F 0 "D?" H 3375 2278 50  0000 C CNN
+F 1 "D_Schottky_AKA" H 3375 2187 50  0000 C CNN
+F 2 "" H 3350 2000 50  0001 C CNN
+F 3 "~" H 3350 2000 50  0001 C CNN
+	1    3350 2000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 2000 3200 1800
+Connection ~ 3200 1800
+Wire Wire Line
+	3200 1800 4000 1800
+Wire Wire Line
+	3550 1900 3550 2000
+Wire Wire Line
+	3550 2000 3550 2100
+Connection ~ 3550 2000
+Connection ~ 3550 2100
+Wire Wire Line
+	3550 2100 4450 2100
+Wire Wire Line
+	3250 3550 3250 3350
+Connection ~ 3250 3350
+Wire Wire Line
+	3250 3350 4000 3350
+Wire Wire Line
+	3600 3450 3600 3550
+Wire Wire Line
+	3600 3550 3600 3650
+Connection ~ 3600 3550
+Connection ~ 3600 3650
+Wire Wire Line
+	3600 3650 4450 3650
+Wire Wire Line
+	3200 5050 3200 4850
+Connection ~ 3200 4850
+Wire Wire Line
+	3200 4850 4000 4850
+Wire Wire Line
+	3550 4950 3550 5050
+Wire Wire Line
+	3550 5050 3550 5150
+Wire Wire Line
+	2600 5150 3550 5150
+Connection ~ 3550 5050
+Connection ~ 3550 5150
+Wire Wire Line
+	3550 5150 4450 5150
 $EndSCHEMATC
