@@ -150,7 +150,7 @@ module bracketBody(){
 
 module bracket411cj(){
     difference(){
-        bracketBody() relay411cjBody();
+        bracketBody() relayBody411cj();
         translate([0,-10,0])placeMontingBracketOnRelay411cj() placeMountingPlateHolePattern411cj() cylinder(20, 1.5, 1.5);
         translate([-8,0,0])placeMixer() mixerHolePattern() cylinder(10, 0.5, 0.5);
     }
@@ -213,9 +213,9 @@ module placeMountingPlateOnrelay87222c(){
     translate([0, bs, s])rotate([-90,0,0]) children();
 }
 
-bracket87222c();
+//bracket87222c();
 //relay87222c();
 //placeMountingPlateOnrelay87222c() mountingPlate411cj();
 //bracket411cj();
-//transferSwitch411cjAssembly();
+transferSwitch411cjAssembly();
 //bracket();

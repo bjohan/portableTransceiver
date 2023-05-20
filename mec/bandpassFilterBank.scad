@@ -9,9 +9,7 @@ module cCube(v){
 }
 
 module centerCube(v){
-    translate([-v[0]/2,-v[1]/2,0]) cube(v);
-}
-
+    translate([-v[0]/2,-v[1]/2,0]) c
 module x(d){
     translate([d,0,0]) children();
 }
