@@ -8,5 +8,5 @@
 	path = measure/amplifiers/data
 	url = https://github.com/bjohan/data.git
 [submodule "measure/rf_if_converter_stage/lmx2594"]
-	path = measure/rf_if_converter_stage/lmx2594
+	path = sw/rf_if_converter/lmx2594
 	url = https://github.com/bjohan/lmx2594.git
