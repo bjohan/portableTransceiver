@@ -1022,17 +1022,18 @@ module screwToweriHole(t, ri, rs, l){
 placeSp6tFan() sp6t();
 sp6tFanBottomSideBracket();
 sp6tExhaustSmaSideBracket();*/
-
+lof=20+9-10;
+lofa=20+9;
 module sideLidABody(){
     t = 2;
     difference(){
-        translate([-20,70,-37]) cCube([170, 50, 74]);
-        translate([-20,70-t,-37+t]) cCube([170-2*t, 50, 74-2*t]);
-        placeAScrews() screwToweriHole(3, 5, 1.6, 50);
+        translate([-20,70-lofa/2,-37]) cCube([170, 50-lofa, 74]);
+        translate([-20,70-t-lofa/2,-37+t]) cCube([170-2*t, 50-lofa, 74-2*t]);
+        placeAScrews() screwToweriHole(3, 5, 1.6, 50-lofa);
     }
     intersection(){
-        placeAScrews() screwTower(3, 5, 1.6, 50);
-        translate([-20,60,-37]) cCube([170, 70, 74]);
+        placeAScrews() screwTower(3, 5, 1.6, 50-lofa);
+        translate([-20,60-lofa/2,-37]) cCube([170, 70-lofa, 74]);
     }
     placeSideLidABulkhead() cylinder(5, 8, 8);
 }
@@ -1110,12 +1111,12 @@ sideLidB();*/
 
 module sideLidBBody(){
     t = 2;
-    position = [20,-75,-37];
-    size= [170, 50, 74];
+    position = [20,-75+lof/2,-37];
+    size= [170, 50-lof, 74];
     difference(){
         translate(position) cCube(size);
         translate(position+[0,t,t]) cCube(size+[-2*t, 0, -2*t]);
-        placeBScrews() screwToweriHole(3, 5, 1.6, 70);
+        placeBScrews() screwToweriHole(3, 6.5, 1.6, 70);
         placeBananaConnectorsOnLidB() bananaConnectorBody(e=0.35);
         placeSp6tFan() translate([20,0,40])cCube([50, 50, 10-2]);
     }
@@ -1127,8 +1128,16 @@ module sideLidBBody(){
 }
 
 module placeBananaConnectorsOnLidB(){
-    translate([-68,-75,19.05/2]) rotate([0,90,0]) rotate([0, 0, 90]) children();
-    translate([-68,-75,-19.05/2]) rotate([0,90,0]) rotate([0, 0, 90]) children();
+    y(lof/2){ children();
+    }
+}
+
+
+module placeBananaConnectorsOnLidB(){
+    y(lof/2){
+        translate([-68,-75,19.05/2]) rotate([0,90,0]) rotate([0, 0, 90]) children();
+        translate([-68,-75,-19.05/2]) rotate([0,90,0]) rotate([0, 0, 90]) children();
+    }
 }
 
 module assembly(){
@@ -1152,22 +1161,21 @@ module assembly(){
 }
 
 module placeSideLidBBulkhead(){
-    placeSp6tFan() z(92-4-2) children();
+    y(lof) placeSp6tFan() z(92-4-2) children();
 }
 
 module placeSideLidABulkhead(){
-    placeSp6tExhaust() z(98-2-4) children();
+    y(-lofa) placeSp6tExhaust() z(98-2-4) children();
 }
 
 
-
+//placeBananaConnectorsOnLidB() bananaConnectorBody();
 //sideLidA();
 //sideLidB();
 //placeSp6tExhaust() sp6t();
 //placeSp6tFan() sp6t();
 
 
-//
 assembly();
 //sideLidB();
 

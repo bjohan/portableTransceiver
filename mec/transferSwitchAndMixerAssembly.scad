@@ -1,10 +1,10 @@
-module quad(x2, y2){
+module quad(x2, y2, v=[true, true, true, true]){
     x = x2/2;
     y = y2/2;
-    translate([x, y, 0]) children();
-    translate([x, -y, 0]) children();
-    translate([-x, y, 0]) children();
-    translate([-x, -y, 0]) children();
+    if(v[0]) translate([x, y, 0]) children();
+    if(v[1]) translate([x, -y, 0]) children();
+    if(v[2]) translate([-x, y, 0]) children();
+    if(v[3]) translate([-x, -y, 0]) children();
 }
 
 module cCube(v){
@@ -19,6 +19,11 @@ module smaFemale(){
     cylinder(l,r,r);
 }
 
+module placeRelay411cjSmas(v=[true, true, true, true]){
+    lsma=22.6-6.3;
+    quad(lsma, lsma, v) rotate([180,0,0]) children();
+}
+
 module relayBody411cj(){
     r = 3;
     bs = 32.4;
@@ -28,8 +33,8 @@ module relayBody411cj(){
         translate([0,0,th-r])quad(bs-2*r, bs-2*3) sphere(r);
     }
     lsma=22.6-6.3;
-    quad(lsma, lsma) rotate([180,0,0])smaFemale();
-    
+    //quad(lsma, lsma) rotate([180,0,0])smaFemale();
+    placeRelay411cjSmas() smaFemale();
     translate([0,0,th])rotate([0,0,45])cCube([31, 13, 8]);
     translate([-bs/2, 0,6]) sphere(2.5);
     translate([bs/2, 0,6]) sphere(2.5);
@@ -81,6 +86,29 @@ module relay411cj(){
 }
 
 
+module relayBodyPe71S6119(){
+    r = 3;
+    bs = 32.4;
+    th=45;
+    translate([0,1.5,0]){
+        hull(){
+            quad(bs-2*r, bs-2*3) cylinder(1,r,r);
+            translate([0,0,th-r])quad(bs-2*r, bs-2*3) sphere(r);
+        }
+        lsma=22.6-6.3;
+        //quad(lsma, lsma) rotate([180,0,0])smaFemale();
+        placeRelay411cjSmas() smaFemale();
+        translate([0,7.6/2,th]) cylinder(5,2,2);
+        translate([0,-7.6/2,th]) cylinder(5,2,2);
+        for(i=[0:3]) rotate([0,0,i*90]) translate([-bs/2, 7.5,6]) sphere(2.5);
+        cCube([bs, bs, 3.3]);
+    }
+}
+
+module relayPe71S6119(){
+    relayBodyPe71S6119();
+}
+
 module mixerHolePattern(){
     quad(6.2, 11.2) children();
 }
@@ -101,6 +129,16 @@ module mixerBody(){
         cCube([14.5, 13.2, 4.8]);
 }
 
+
+module placeMixerConnectors(v=[true, true,true]){
+    l=14.5;
+    w=13.2;
+    h=4.8/2;
+    if(v[0]) translate([0, -w/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])children();
+    if(v[1]) rotate([0,0,90])translate([0, -l/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])children();
+    if(v[2]) rotate([0,0,3*90])translate([0, -l/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])children();
+}
+
 module mixer(r=6.3/2){
     l=14.5;
     w=13.2;
@@ -109,9 +147,10 @@ module mixer(r=6.3/2){
         mixerBody();
          mixerHolePattern() cylinder(6,0.8, 0.8);
     }
-    translate([0, -w/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])mixerSmaConnector(r=r);
-    rotate([0,0,90])translate([0, -l/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])mixerSmaConnector(r=r);
-    rotate([0,0,3*90])translate([0, -l/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])mixerSmaConnector(r=r);
+    //translate([0, -w/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])mixerSmaConnector(r=r);
+    //rotate([0,0,90])translate([0, -l/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])mixerSmaConnector(r=r);
+    //rotate([0,0,3*90])translate([0, -l/2, h])rotate([90, 0, 0]) rotate([0,0,-45/4])mixerSmaConnector(r=r);
+    placeMixerConnectors() mixerSmaConnector(r=r);
 }
 
 module bracketBody(){
@@ -166,6 +205,14 @@ module bracket87222c(){
     
 }
 
+module bracketPe71S6119(){
+    difference(){
+        bracketBody() relayPe71S6119();
+        translate([0,-10,0])placeMontingBracketOnRelay411cj() placeMountingPlateHolePattern411cj() cylinder(20, 1.5, 1.5);
+        translate([-8,0,0])placeMixer() mixerHolePattern() cylinder(10, 0.5, 0.5);
+    }
+    
+}
 
 module placeMixer(){
     translate([20,-(22.6-6.3)/2,9.8])rotate([0,90,0])children();
@@ -213,9 +260,13 @@ module placeMountingPlateOnrelay87222c(){
     translate([0, bs, s])rotate([-90,0,0]) children();
 }
 
+
+//relayPe71S6119();
+bracketPe71S6119();
+//relay411cj();
 //bracket87222c();
 //relay87222c();
 //placeMountingPlateOnrelay87222c() mountingPlate411cj();
 //bracket411cj();
-transferSwitch411cjAssembly();
+//transferSwitch411cjAssembly();
 //bracket();

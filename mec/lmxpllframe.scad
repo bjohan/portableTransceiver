@@ -1,5 +1,6 @@
 use <transferSwitchAndMixerAssembly.scad>;
 use <sp2t.scad>
+use<cable.scad>
 module cCube(v){
     x = -v[0]/2;
     y = -v[1]/2;
@@ -245,13 +246,13 @@ module smaFemaleWithNut(){
 }
 
 
-module placeSmas(){
-    translate([60-19,-29.5,15]) rotate([90,0,0])children();
-    translate([59.5,-0.5,15]) rotate([0,90,0])children();
-    translate([59.5, 33,15]) rotate([0,90,0])children();
+module placeSmas(v=[true, true, true, true, true]){
+    if(v[0]) translate([60-19,-29.5,15]) rotate([90,0,0])children();
+    if(v[1])translate([59.5,-0.5,15]) rotate([0,90,0])children();
+    if(v[2])translate([59.5, 33,15]) rotate([0,90,0])children();
     
-    translate([-59.5,-0.5,15]) rotate([0,-90,0])children();
-    translate([-59.5, 33,15]) rotate([0,-90,0])children();
+    if(v[3])translate([-59.5,-0.5,15]) rotate([0,-90,0])children();
+    if(v[4])translate([-59.5, 33,15]) rotate([0,-90,0])children();
 }
 
 
@@ -294,11 +295,15 @@ module sa9SmaConnector(){
     
 }
 
+module placeSa9Connectors(v=[true, true]){
+    s=[95.6, 29.5, 17];
+    if(v[0]) translate([-s[0]/2, 1.5 , 4.2+9.6/2]) rotate([0, -90, 0]) rotate([0,0,90]) children();
+    if(v[1]) translate([s[0]/2, 1.5 , 4.2+9.6/2]) rotate([0, 90, 0]) rotate([0,0,90]) children();
+}
 module sa9AmplifierBody(){
     s=[95.6, 29.5, 17];
     cCube(s);
-    translate([-s[0]/2, 1.5 , 4.2+9.6/2]) rotate([0, -90, 0]) rotate([0,0,90]) sa9SmaConnector();
-    translate([s[0]/2, 1.5 , 4.2+9.6/2]) rotate([0, 90, 0]) rotate([0,0,90]) sa9SmaConnector();
+    placeSa9Connectors() sa9SmaConnector();
     translate([-s[0]/2, 3.5-s[1]/2 , 5]) rotate([0, -90, 0]) rotate([0,0,90]) cylinder(9, 5.4/2, 5.4/2);
     translate([-s[0]/2, 3.5-s[1]/2 , 11]) rotate([0, -90, 0]) rotate([0,0,90]) cylinder(6, 4/2, 4/2);
 }
@@ -413,7 +418,7 @@ module placeSp2t(){
 }
 
 module placeSa9Amplifier(){
-    translate([-3, 0, 0]) translate([0+4,45-10, 32.1]) children();
+    translate([-3, 0, 0]) translate([0+4,45-10, 32.1]) rotate([0,0,180])children();
 }
 
 module assembly3BottomComponents(){
@@ -423,7 +428,7 @@ module assembly3BottomComponents(){
         
     }
     placeSp2t() relaySp2t();
-    //placeSa9Amplifier() sa9Amplifier();
+    placeSa9Amplifier() sa9Amplifier();
 }
 
 module pllBoxAssembly(){
@@ -455,6 +460,7 @@ module pllAssembly3(){
     fanAssembly();
     pllBoxAssembly();
     bottomHousingAssembly();
+    cables();
 }
 
 module inletHole(){
@@ -469,17 +475,89 @@ module inlet(){
         
     }
 }
+
+
+module placeMixerOnTransferSwitch(){
+    placeRelay411cjSmas(v=[false, false, true, false]) translate([0,0,24+12.4]) rotate([0,90,0]) rotate([-135+20,0,0]) translate([0,0,-2.4]) children();
+}
+
+
+
+
+cableR=3.6/2;
+
+
+
+
+module highPowerToSpdtCable(){
+    cableSection(5, cableR, 10, 90, 202)cableSection(28, cableR, 10, 90, 0) cableSection(19.11, cableR, 10, 0, 0);
+}
+
+module sa9InputCable(){
+    cableSection(5, cableR, 10, 90, -1) cableSection(6, cableR, 10, 90, 0) cableSection(16.8, cableR, 10, 0, 0);
+}
+
+module sa9OutputCable(){
+    cableSection(5, cableR, 9, 90, 255)cableSection(1, cableR, 9, 90, 0)cableSection(5, cableR, 9, 0, 0);
+}
+
+module rfIfCableShort(){
+    cableSection(12.4, cableR, 0, 0, 0);
+}
+
+module rfIfCableLong(){
+    mixerBendR=8;
+    inclination=10;
+    cableSection(5, cableR, mixerBendR, 90, 45/4+180+inclination) cableSection(0, cableR, mixerBendR+3+1, 90, inclination) cableSection(0, cableR, mixerBendR+3+1, 90, inclination)  cableSection(0, cableR, mixerBendR, 90, inclination)cableSection(0, cableR, mixerBendR, 90, inclination)cableSection(20, cableR, mixerBendR, 0, 0);
+}
+
+module loCable(){
+    mixerBendR=8;
+    cableSection(5, cableR, mixerBendR, 90, 178) cableSection(32, cableR, mixerBendR, 90, 0) cableSection(51, cableR, mixerBendR, 0, 0);
+}
+
+module placeRfIfCableLong(){
+    
+    inclination=10;
+    placeTransferSwitchAssembly() placeMixerOnTransferSwitch() placeMixerConnectors([true, false, false]) translate([0,0,10]) rotate([0,0,-inclination]) children();
+}
+
+module cables(){
+    placeSmas([false, false, false, false, true]) translate([0,0,9]) highPowerToSpdtCable();
+    placeSmas([false, false, true, false, false]) translate([0,0,9]) sa9InputCable();
+    placeSa9Amplifier() placeSa9Connectors([false, true ]) translate([0,0,8]) sa9OutputCable();
+    placeTransferSwitchAssembly() placeRelay411cjSmas(v=[false, false, true, false]) translate([0,0,7.1]) rfIfCableShort();
+    placeTransferSwitchAssembly() placeMixerOnTransferSwitch() mixer();
+    placeRfIfCableLong() rfIfCableLong();
+    placeTransferSwitchAssembly() 
+        placeMixerOnTransferSwitch() 
+            placeMixerConnectors([false, false, true]) translate([0,0,10]) rotate([0,0,-10]) loCable();
+}
+
+//cableForm2() highPowerToSpdtCable($fn=10);
+//cableForm2() sa9InputCable();
+//cableForm2() sa9OutputCable();
+//cableForm2() rfIfCableShort();
+//cableForm2() rfIfCableLong();
+//cableForm2() loCable();
+
+//cables();
+//placeTransferSwitchAssembly() translate([-12.9/2-4.1+2.4,12.9/2+1.6,-24-12.4]);
+
+//placeTransferSwitchAssembly() translate([-12.9/2-4.1+2.4,12.9/2+1.6,-24-12.4]) rotate([0,90,0]) rotate([-45,0,0])translate([0,0,-2.4]) mixer();
+
+//mixer();
 //inlet();
 //fanFrame();
 //box();
-bottomHousing();
+//bottomHousing();
 
-
+//placeBox() bottomHousingBody();
 //placeSp2t() relaySp2t();
 //placeSp2t() placeScrewHolesOnSp2t() z(13) cylinder(100,2,2);
 //assembly3BottomComponents();
 //bottomHousingAssembly();
-//pllAssembly3();
+pllAssembly3();
 //frame();
 //fanFrame();
 //fanHolePattern();

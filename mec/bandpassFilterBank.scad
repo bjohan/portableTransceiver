@@ -1,5 +1,7 @@
-//use <sp6t.scad>
+ //use <sp6t.scad>
 use <filters.scad>
+use <sp2t.scad>
+use <cable.scad>
 nfilt=8;
 
 module cCube(v){
@@ -9,7 +11,9 @@ module cCube(v){
 }
 
 module centerCube(v){
-    translate([-v[0]/2,-v[1]/2,0]) c
+    translate([-v[0]/2,-v[1]/2,0]) cube(v);
+}
+
 module x(d){
     translate([d,0,0]) children();
 }
@@ -546,6 +550,7 @@ module assembly(){
         placeBoxHolderFlerpScrews() z(3) m3Screw();
         placeBoxHolderFlerps() flerp();
     }
+    placeSp2tAtCoverA(b=false) relaySp2t();
 }
 
 module screwTower(l, ri, t){
@@ -570,7 +575,7 @@ placeBoxHolderFlerps() flerp();*/
 //Complete assembly
 //assembly();
 
-coverLength=90;
+coverLength=90-15;
 module protectiveCover(){
     
     z(coverLength+45.5) cylinder(3, 45, 45);
@@ -595,7 +600,7 @@ module coversBody(){
         union(){
             placeLowBank() placeSwitches() protectiveCover();
             placeHighBank() placeSwitches() protectiveCover();
-                    placeLowBank() placeSwitches()  placeSmaBulkhead() smaBulkheadSeatBody();
+            placeLowBank() placeSwitches()  placeSmaBulkhead() smaBulkheadSeatBody();
             placeHighBank() placeSwitches()  placeSmaBulkhead() smaBulkheadSeatBody();
         }
         placeLowBank() placeSwitches() sp6tHolePattern() z(3) cylinder(coverLength+10, 3.5, 3.5);
@@ -628,9 +633,12 @@ module coversBody(){
 
 
 module endCoverA(){
-    intersection(){
-    coversBody();
-        cylinder(1000, 1000, 1000);
+    difference(){
+        intersection(){
+        coversBody();
+            cylinder(1000, 1000, 1000);
+        }
+        placeSp2tAtCoverA() placeScrewHolesOnSp2t() translate([0,0,-10]) cylinder(30, 1.5, 1.5);
     }
 }
 
@@ -654,9 +662,18 @@ module smaBulkheadSeatBody(){
     z(1) cylinder(3, 10, 10);
 }
 
- 
+module placeSp2tAtCoverA(a=true, b=true){
+    if(a) translate([0, 18, 142.5]) rotate([0, 0, 90]) children();
+    if(b) translate([0, -18, 142.5]) rotate([0, 0, -90]) children();
+}
+
+placeHighBank() placeSwitches()  placeSmaBulkhead() smaBulkhead();
+
 endCoverB();
 endCoverA();
+placeSp2tAtCoverA(b=false) relaySp2t();
+translate([0,-25, 150.5])cableSection(6.5, 3.6/2, 8, 180, -90) cableSection(4.5*0, 3.6/2, 8, 90, 180)cableSection(8.5+6, 3.6/2, 8, 0, 0);
+
 assembly();
 //smaBulkHead();
 //smaBulkheadSeatBody();
